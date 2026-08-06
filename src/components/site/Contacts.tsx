@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF } from '@/data/council';
+import { CONTACT_EMAIL, CONTACT_TELEGRAM, CONTACT_TELEGRAM_LABEL } from '@/data/council';
 
 type Errors = { name?: string; email?: string; message?: string };
 
@@ -29,7 +29,7 @@ const Contacts = () => {
     setSent(true);
     toast({
       title: 'Письмо подготовлено',
-      description: `Мы отвечаем в течение трёх рабочих дней на ${CONTACT_EMAIL}.`,
+      description: `Письмо будет направлено на ${CONTACT_EMAIL}.`,
     });
     const body = encodeURIComponent(
       `${form.message}\n\n${form.name}${form.org ? `, ${form.org}` : ''}\nОбратный адрес: ${form.email}`,
@@ -48,24 +48,28 @@ const Contacts = () => {
         <div>
           <p className="eyebrow mb-6">Контакты и обратная связь</p>
           <h2 className="max-w-[20ch] text-[1.9em] leading-tight">
-            Позвоните или&nbsp;направьте письмо
+Напишите нам
           </h2>
           <p className="mt-4 max-w-[52ch] text-muted-foreground">
             Ответим на&nbsp;вопросы о&nbsp;документах, порядке вступления в&nbsp;Совет и&nbsp;работе
-            региональных представителей.
+            рабочих групп.
           </p>
 
           <div className="mt-8 space-y-3">
             <a
-              href={`tel:${CONTACT_PHONE_HREF}`}
+              href={CONTACT_TELEGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex min-h-[44px] items-center gap-4 rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
             >
               <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-secondary text-primary">
-                <Icon name="Phone" size={22} />
+                <Icon name="Send" size={22} />
               </span>
               <span>
-                <span className="block text-[0.85em] text-muted-foreground">Телефон Совета</span>
-                <span className="font-heading text-[1.05em]">{CONTACT_PHONE}</span>
+                <span className="block text-[0.85em] text-muted-foreground">
+                  Telegram председателя Совета
+                </span>
+                <span className="font-heading text-[1.05em]">{CONTACT_TELEGRAM_LABEL}</span>
               </span>
             </a>
             <a
@@ -85,8 +89,8 @@ const Contacts = () => {
                 <Icon name="Clock" size={22} />
               </span>
               <span>
-                <span className="block text-[0.85em] text-muted-foreground">Время ответа</span>
-                <span className="font-heading text-[1.05em]">Три рабочих дня</span>
+                <span className="block text-[0.85em] text-muted-foreground">Заседания Совета</span>
+                <span className="font-heading text-[1.05em]">Онлайн, ZOOM, 9:00 МСК</span>
               </span>
             </div>
           </div>

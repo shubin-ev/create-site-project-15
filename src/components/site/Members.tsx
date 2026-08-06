@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import Icon from '@/components/ui/icon';
-import { GROUPS, MEMBERS, REGIONS } from '@/data/council';
+import { MEMBERS } from '@/data/council';
 
 const initials = (name: string) =>
   name
@@ -9,42 +9,43 @@ const initials = (name: string) =>
     .map((w) => w[0])
     .join('');
 
+const SOSTAV_URL = 'https://mental-health-russia.ru/wp-content/uploads/2025/02/NKO-02.2025.pdf';
+
 const Members = () => {
   const [query, setQuery] = useState('');
-  const [region, setRegion] = useState(REGIONS[0]);
-  const [group, setGroup] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return MEMBERS.filter((m) => {
-      const byQuery = !q || `${m.name} ${m.position}`.toLowerCase().includes(q);
-      const byRegion = region === REGIONS[0] || m.region === region;
-      const byGroup = !group || m.group === group;
-      return byQuery && byRegion && byGroup;
-    });
-  }, [query, region, group]);
-
-  const reset = () => {
-    setQuery('');
-    setRegion(REGIONS[0]);
-    setGroup(null);
-  };
+    return MEMBERS.filter(
+      (m) => !q || `${m.name} ${m.position} ${m.role}`.toLowerCase().includes(q),
+    );
+  }, [query]);
 
   return (
     <section id="members" className="scroll-mt-24 border-t border-border py-16 sm:py-20">
       <div className="section-shell">
         <p className="eyebrow mb-6">Состав Совета</p>
-        <h2 className="max-w-[22ch] text-[1.9em] leading-tight">
-          108 представителей НКО из&nbsp;78 субъектов РФ
+        <h2 className="max-w-[24ch] text-[1.9em] leading-tight">
+          Председатель и&nbsp;организационный комитет
         </h2>
         <p className="mt-4 max-w-[60ch] text-muted-foreground">
-          Найдите коллегу по&nbsp;фамилии, организации, региону или рабочей группе. Ниже показана
-          часть состава; полный список доступен в&nbsp;разделе «Документы».
+          В&nbsp;состав Совета вошли руководители некоммерческих организаций из&nbsp;85&nbsp;регионов
+          Российской Федерации. Ниже — председатель и&nbsp;организационный комитет; полный список
+          доступен в&nbsp;документе{' '}
+          <a
+            href={SOSTAV_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-b border-primary/35 text-primary transition-colors hover:border-primary"
+          >
+            «Состав Совета НКО»
+          </a>
+          .
         </p>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-[minmax(0,1fr)_260px]">
-          <label className="relative">
+        <div className="mt-8 max-w-[520px]">
+          <label className="relative block">
             <span className="sr-only">Поиск по фамилии и организации</span>
             <Icon
               name="Search"
@@ -58,52 +59,20 @@ const Members = () => {
               className="h-[52px] w-full rounded-lg border border-border bg-surface pl-12 pr-4 transition-colors placeholder:text-tertiary hover:border-primary focus:border-primary"
             />
           </label>
-          <label>
-            <span className="sr-only">Регион</span>
-            <select
-              value={region}
-              onChange={(e) => setRegion(e.target.value)}
-              className="h-[52px] w-full rounded-lg border border-border bg-surface px-4 transition-colors hover:border-primary focus:border-primary"
-            >
-              {REGIONS.map((r) => (
-                <option key={r} value={r}>
-                  {r}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {GROUPS.map((g) => (
-            <button
-              key={g}
-              type="button"
-              aria-pressed={group === g}
-              onClick={() => setGroup(group === g ? null : g)}
-              className={`inline-flex min-h-[44px] items-center rounded-lg border px-4 text-[0.88em] transition-colors ${
-                group === g
-                  ? 'border-primary bg-primary text-primary-foreground'
-                  : 'border-border bg-surface hover:border-primary'
-              }`}
-            >
-              {g}
-            </button>
-          ))}
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-4 text-[0.88em] text-muted-foreground">
           <span>
             Найдено: <strong className="text-foreground">{list.length}</strong>
           </span>
-          {(query || region !== REGIONS[0] || group) && (
+          {query && (
             <button
               type="button"
-              onClick={reset}
+              onClick={() => setQuery('')}
               className="inline-flex items-center gap-1.5 border-b border-primary/35 text-primary transition-colors hover:border-primary"
             >
               <Icon name="X" size={14} />
-              Сбросить фильтры
+              Сбросить
             </button>
           )}
         </div>
@@ -122,7 +91,7 @@ const Members = () => {
                   </span>
                   <div>
                     <h3 className="font-heading text-[1em] leading-snug">{m.name}</h3>
-                    <p className="mt-1 text-[0.85em] text-muted-foreground">{m.region}</p>
+                    <p className="mt-1 text-[0.85em] text-muted-foreground">{m.role}</p>
                   </div>
                 </div>
                 <p
@@ -132,19 +101,15 @@ const Members = () => {
                 >
                   {m.position}
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setExpanded(open ? null : m.name)}
-                  className="mt-2 self-start text-[0.85em] text-primary underline-offset-4 hover:underline"
-                >
-                  {open ? 'Свернуть' : 'Подробнее'}
-                </button>
-                <div className="mt-4 flex flex-wrap gap-2 border-t border-border pt-4">
-                  <span className="chip">{m.role}</span>
-                  <span className="inline-flex h-7 items-center rounded-full bg-secondary px-3.5 text-[0.78em] text-secondary-foreground">
-                    {m.group}
-                  </span>
-                </div>
+                {m.position.length > 120 && (
+                  <button
+                    type="button"
+                    onClick={() => setExpanded(open ? null : m.name)}
+                    className="mt-2 self-start text-[0.85em] text-primary underline-offset-4 hover:underline"
+                  >
+                    {open ? 'Свернуть' : 'Подробнее'}
+                  </button>
+                )}
               </article>
             );
           })}
@@ -152,7 +117,8 @@ const Members = () => {
 
         {list.length === 0 && (
           <p className="mt-8 rounded-lg border border-border bg-surface p-6 text-muted-foreground">
-            По&nbsp;заданным условиям никого не&nbsp;нашлось. Измените запрос или сбросьте фильтры.
+            По&nbsp;заданному запросу никого не&nbsp;нашлось. Измените запрос или откройте полный
+            список состава.
           </p>
         )}
       </div>

@@ -45,24 +45,27 @@ const About = () => {
             </div>
 
             <h3 className="mt-12 font-heading text-[1.35em]">Рабочие группы</h3>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {WORK_GROUPS.map((g) => (
                 <article
                   key={g.title}
-                  className="rounded-lg border border-border bg-background p-5 transition-colors hover:border-primary"
+                  className="flex flex-col rounded-lg border border-border bg-background p-5 transition-colors hover:border-primary"
                 >
-                  <h4 className="font-heading text-[1em] leading-snug">{g.title}</h4>
+                  <h4 className="font-heading text-[1.05em] leading-snug">{g.title}</h4>
                   <p className="mt-3 text-[0.88em] leading-[1.5] text-muted-foreground">{g.text}</p>
-                  <dl className="mt-4 space-y-1 border-t border-border pt-3 text-[0.85em]">
-                    <div className="flex gap-2">
-                      <dt className="text-muted-foreground">Руководитель:</dt>
-                      <dd>{g.lead}</dd>
-                    </div>
-                    <div className="flex gap-2">
-                      <dt className="text-muted-foreground">Состав:</dt>
-                      <dd>{g.members}</dd>
-                    </div>
-                  </dl>
+                  <p className="mt-4 flex items-start gap-2 text-[0.85em] text-muted-foreground">
+                    <Icon name="Clock" size={15} className="mt-0.5 flex-none" />
+                    {g.schedule}
+                  </p>
+                  <a
+                    href={g.docUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 self-start border-t border-border pt-4 text-[0.88em] text-primary"
+                  >
+                    Состав рабочей группы
+                    <Icon name="ArrowUpRight" size={16} />
+                  </a>
                 </article>
               ))}
             </div>

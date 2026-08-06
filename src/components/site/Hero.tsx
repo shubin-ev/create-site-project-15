@@ -6,9 +6,17 @@ import { scrollToSection } from '@/lib/scroll';
 
 type HeroProps = {
   onSearch: (query: string) => void;
+  onTopic: (topic: string) => void;
 };
 
-const Hero = ({ onSearch }: HeroProps) => {
+const TAG_TOPICS: Record<string, string> = {
+  'Волонтёрство в психиатрии': 'Волонтёрство в психиатрии',
+  'Инклюзивное образование': 'Инклюзивное образование',
+  'Общественный контроль': 'Общественный контроль в психиатрии',
+  'Нормативно-правовые акты': 'Нормативно-правовые акты',
+};
+
+const Hero = ({ onSearch, onTopic }: HeroProps) => {
   const [value, setValue] = useState('');
   const next = useNextMeeting();
 
@@ -19,8 +27,8 @@ const Hero = ({ onSearch }: HeroProps) => {
   };
 
   const pickTag = (tag: string) => {
-    setValue(tag);
-    onSearch(tag);
+    setValue('');
+    onTopic(TAG_TOPICS[tag] ?? tag);
     scrollToSection('documents');
   };
 
@@ -35,9 +43,9 @@ const Hero = ({ onSearch }: HeroProps) => {
           </h1>
 
           <p className="mt-6 max-w-[52ch] leading-[1.55] text-muted-foreground">
-            Документы Совета, состав по&nbsp;регионам и&nbsp;даты заседаний — в&nbsp;одном каталоге.
-            Начните с&nbsp;поиска: 78&nbsp;субъектов&nbsp;РФ, три рабочие группы, архив
-            с&nbsp;2018&nbsp;года.
+            Документы Совета, состав организационного комитета, график заседаний и&nbsp;методические
+            материалы регионов — в&nbsp;одном каталоге. В&nbsp;составе Совета руководители НКО
+            из&nbsp;85&nbsp;регионов России.
           </p>
 
           <form onSubmit={submit} className="mt-12 flex max-w-[640px] flex-col gap-3 sm:flex-row">
@@ -52,7 +60,7 @@ const Hero = ({ onSearch }: HeroProps) => {
                 type="search"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                placeholder="Название документа, тема или регион"
+                placeholder="Название документа, организация или тема"
                 aria-label="Поиск по документам Совета"
                 className="h-[52px] w-full rounded-lg border border-border bg-surface pl-12 pr-4 text-foreground transition-colors placeholder:text-tertiary hover:border-primary focus:border-primary"
               />
@@ -97,17 +105,17 @@ const Hero = ({ onSearch }: HeroProps) => {
               {next.date}
             </div>
             <div className="mt-2 text-[0.88em] text-muted-foreground">
-              Четверг, 9:00 по&nbsp;московскому времени · {next.format.toLowerCase()}
+              9:00 по&nbsp;московскому времени · {next.format}
             </div>
             <p className="mt-4 border-t border-border pt-4 leading-[1.45]">
-              {next.title}. Ссылка на&nbsp;подключение открывается за&nbsp;сутки до&nbsp;начала.
+              {next.title}. Ссылка на&nbsp;подключение предоставляется отдельно.
             </p>
             <button
               type="button"
               onClick={() => scrollToSection('meetings')}
               className="mt-4 inline-flex min-h-[24px] items-center gap-2 border-b border-primary/35 text-[0.88em] text-primary transition-colors hover:border-primary"
             >
-              График заседаний до&nbsp;июня 2027
+              График заседаний
               <Icon name="ArrowRight" size={16} />
             </button>
           </div>
@@ -120,7 +128,7 @@ const Hero = ({ onSearch }: HeroProps) => {
             >
               {CONTACT_EMAIL}
             </a>
-            . Отвечаем в&nbsp;течение трёх рабочих дней.
+            .
           </p>
         </aside>
       </div>

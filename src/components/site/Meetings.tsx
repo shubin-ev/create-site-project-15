@@ -10,14 +10,14 @@ const Meetings = () => {
       <div className="section-shell">
         <p className="eyebrow mb-6">Мероприятия и заседания</p>
         <h2 className="max-w-[26ch] text-[1.9em] leading-tight">
-          Совет собирается раз в&nbsp;три месяца, по&nbsp;четвергам в&nbsp;9:00 по&nbsp;Москве
+          Заседания проходят онлайн на&nbsp;платформе ZOOM в&nbsp;9:00 по&nbsp;Москве
         </h2>
         <p className="mt-4 max-w-[60ch] text-muted-foreground">
-          Утверждённый график до&nbsp;июня 2027 года. Расписание заседаний рабочих групп плавающее
-          и&nbsp;рассылается участникам отдельно.
+          График заседаний Совета НКО при&nbsp;РОП на&nbsp;2026 год. Заседания рабочих групп проходят
+          по&nbsp;отдельному расписанию, ссылки на&nbsp;подключение рассылаются участникам.
         </p>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {MEETINGS.map((m) => {
             const past = isPast(m.iso);
             const isNext = m.iso === next.iso;

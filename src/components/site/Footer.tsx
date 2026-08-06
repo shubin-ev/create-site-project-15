@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF, LOGO_URL, NAV_LINKS } from '@/data/council';
+import { CONTACT_EMAIL, CONTACT_TELEGRAM, CONTACT_TELEGRAM_LABEL, LOGO_URL, NAV_LINKS } from '@/data/council';
 import { scrollToSection } from '@/lib/scroll';
 
 const Footer = () => (
@@ -47,10 +47,12 @@ const Footer = () => (
           </li>
           <li>
             <a
-              href={`tel:${CONTACT_PHONE_HREF}`}
+              href={CONTACT_TELEGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex min-h-[36px] items-center text-header-foreground/80 transition-colors hover:text-header-hover"
             >
-              {CONTACT_PHONE}
+              Telegram {CONTACT_TELEGRAM_LABEL}
             </a>
           </li>
         </ul>

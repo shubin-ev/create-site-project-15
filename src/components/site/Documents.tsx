@@ -1,12 +1,14 @@
 import { useMemo } from 'react';
 import Icon from '@/components/ui/icon';
-import { DOCUMENTS, DOC_TYPES, DOC_YEARS } from '@/data/council';
+import { DOCUMENTS, DOC_TOPICS, DOC_TYPES, DOC_YEARS } from '@/data/council';
 
 type DocumentsProps = {
   query: string;
   onQueryChange: (value: string) => void;
   type: string;
   onTypeChange: (value: string) => void;
+  topic: string;
+  onTopicChange: (value: string) => void;
   year: string;
   onYearChange: (value: string) => void;
 };
@@ -16,27 +18,38 @@ const Documents = ({
   onQueryChange,
   type,
   onTypeChange,
+  topic,
+  onTopicChange,
   year,
   onYearChange,
 }: DocumentsProps) => {
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
     return DOCUMENTS.filter((d) => {
-      const byQuery =
-        !q || `${d.title} ${d.description} ${d.topic}`.toLowerCase().includes(q);
+      const byQuery = !q || `${d.title} ${d.org ?? ''} ${d.topic}`.toLowerCase().includes(q);
       const byType = type === DOC_TYPES[0] || d.type === type;
+      const byTopic = topic === DOC_TOPICS[0] || d.topic === topic;
       const byYear = year === DOC_YEARS[0] || d.year === year;
-      return byQuery && byType && byYear;
+      return byQuery && byType && byTopic && byYear;
     });
-  }, [query, type, year]);
+  }, [query, type, topic, year]);
 
-  const hasFilters = Boolean(query) || type !== DOC_TYPES[0] || year !== DOC_YEARS[0];
+  const hasFilters =
+    Boolean(query) || type !== DOC_TYPES[0] || topic !== DOC_TOPICS[0] || year !== DOC_YEARS[0];
 
   const reset = () => {
     onQueryChange('');
     onTypeChange(DOC_TYPES[0]);
+    onTopicChange(DOC_TOPICS[0]);
     onYearChange(DOC_YEARS[0]);
   };
+
+  const btn = (isActive: boolean) =>
+    `inline-flex min-h-[44px] items-center rounded-lg border px-4 text-left text-[0.88em] transition-colors ${
+      isActive
+        ? 'border-primary bg-secondary text-secondary-foreground'
+        : 'border-border bg-background hover:border-primary'
+    }`;
 
   return (
     <section id="documents" className="scroll-mt-24 border-t border-border bg-surface py-16 sm:py-20">
@@ -46,12 +59,28 @@ const Documents = ({
           Единый каталог документов Совета
         </h2>
         <p className="mt-4 max-w-[60ch] text-muted-foreground">
-          Положения, протоколы заседаний и методические материалы. У&nbsp;каждой ссылки указан
-          формат и&nbsp;размер файла.
+          Положения и отчёты Совета, нормативно-правовые акты, формы документов и методические
+          материалы регионов. Все файлы открываются в&nbsp;новом окне.
         </p>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[260px_minmax(0,1fr)]">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            <div>
+              <h3 className="font-heading text-[0.95em] font-medium">Тема</h3>
+              <div className="mt-3 flex flex-wrap gap-2 lg:flex-col">
+                {DOC_TOPICS.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    aria-pressed={topic === t}
+                    onClick={() => onTopicChange(t)}
+                    className={btn(topic === t)}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </div>
             <div>
               <h3 className="font-heading text-[0.95em] font-medium">Тип документа</h3>
               <div className="mt-3 flex flex-wrap gap-2 lg:flex-col">
@@ -61,11 +90,7 @@ const Documents = ({
                     type="button"
                     aria-pressed={type === t}
                     onClick={() => onTypeChange(t)}
-                    className={`inline-flex min-h-[44px] items-center rounded-lg border px-4 text-left text-[0.88em] transition-colors ${
-                      type === t
-                        ? 'border-primary bg-secondary text-secondary-foreground'
-                        : 'border-border bg-background hover:border-primary'
-                    }`}
+                    className={btn(type === t)}
                   >
                     {t}
                   </button>
@@ -81,11 +106,7 @@ const Documents = ({
                     type="button"
                     aria-pressed={year === y}
                     onClick={() => onYearChange(y)}
-                    className={`inline-flex min-h-[44px] items-center rounded-lg border px-4 text-[0.88em] transition-colors ${
-                      year === y
-                        ? 'border-primary bg-secondary text-secondary-foreground'
-                        : 'border-border bg-background hover:border-primary'
-                    }`}
+                    className={btn(year === y)}
                   >
                     {y}
                   </button>
@@ -96,7 +117,7 @@ const Documents = ({
 
           <div>
             <label className="relative block">
-              <span className="sr-only">Поиск по названию и описанию</span>
+              <span className="sr-only">Поиск по названию документа</span>
               <Icon
                 name="Search"
                 size={20}
@@ -105,7 +126,7 @@ const Documents = ({
               <input
                 value={query}
                 onChange={(e) => onQueryChange(e.target.value)}
-                placeholder="Название документа или тема"
+                placeholder="Название документа, организация или тема"
                 className="h-[52px] w-full rounded-lg border border-border bg-background pl-12 pr-4 transition-colors placeholder:text-tertiary hover:border-primary focus:border-primary"
               />
             </label>
@@ -128,7 +149,7 @@ const Documents = ({
 
             <ul className="mt-6 space-y-3">
               {list.map((d) => (
-                <li key={d.title}>
+                <li key={`${d.url}-${d.topic}`}>
                   <article className="flex gap-4 rounded-lg border border-border bg-background p-5 transition-colors hover:border-primary">
                     <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-secondary text-primary">
                       <Icon name={d.format === 'DOCX' ? 'FileText' : 'FileType2'} size={22} />
@@ -136,19 +157,21 @@ const Documents = ({
                     <div className="min-w-0">
                       <h3 className="font-heading text-[1.05em] leading-snug">
                         <a
-                          href={`mailto:nko@mental-health-russia.ru?subject=${encodeURIComponent(
-                            `Запрос документа: ${d.title}`,
-                          )}`}
+                          href={d.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="border-b border-primary/35 text-primary transition-colors hover:border-primary"
                         >
                           {d.title}
                         </a>
                       </h3>
-                      <p className="mt-2 text-[0.9em] leading-[1.5] text-muted-foreground">
-                        {d.description}
-                      </p>
+                      {d.org && (
+                        <p className="mt-2 text-[0.9em] leading-[1.5] text-muted-foreground">
+                          {d.org}
+                        </p>
+                      )}
                       <p className="mt-3 text-[0.85em] text-muted-foreground">
-                        {d.format} · {d.size} · {d.year} · {d.topic}
+                        {d.format} · {d.year} · {d.topic}
                       </p>
                     </div>
                   </article>
