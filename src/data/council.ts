@@ -10,7 +10,6 @@ export const NAV_LINKS = [
   { id: 'members', label: 'Состав' },
   { id: 'documents', label: 'Документы' },
   { id: 'meetings', label: 'Заседания' },
-  { id: 'materials', label: 'Материалы' },
   { id: 'contacts', label: 'Контакты' },
 ];
 
@@ -624,6 +623,12 @@ export const MEMBERS: Member[] = [
 ];
 
 export const MATERIALS = [
+  {
+    icon: 'Landmark',
+    title: 'Документы Совета',
+    text: 'Положение о Совете, свод этических принципов, актуальный состав и годовые отчёты о работе.',
+    topic: 'Документы Совета',
+  },
   {
     icon: 'HeartHandshake',
     title: 'Волонтёрство в психиатрии',
