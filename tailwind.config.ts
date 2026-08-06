@@ -52,6 +52,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				header: {
+					DEFAULT: 'hsl(var(--header))',
+					foreground: 'hsl(var(--header-foreground))',
+					hover: 'hsl(var(--header-hover))'
+				},
+				surface: 'hsl(var(--surface))',
+				teal: {
+					DEFAULT: 'hsl(var(--teal))',
+					soft: 'hsl(var(--teal-soft))',
+					deep: 'hsl(var(--teal-deep))'
+				},
+				brandblue: 'hsl(var(--blue-500))',
+				tertiary: 'hsl(var(--tertiary))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -62,6 +75,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				heading: ['Manrope', 'system-ui', 'sans-serif'],
+				body: ['"PT Sans"', 'system-ui', 'sans-serif']
+			},
+			fontSize: {
+				hero: ['clamp(2rem, 1.2rem + 3vw, 3.03rem)', { lineHeight: '1.1', letterSpacing: '-0.03em' }]
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
