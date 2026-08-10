@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
-import { ABOUT_TABS, QUOTES } from '@/data/council';
+import { ABOUT_TABS, COUNCIL_DOCS, QUOTES } from '@/data/council';
 
 const About = () => {
   const [active, setActive] = useState(ABOUT_TABS[0].id);
@@ -60,6 +60,46 @@ const About = () => {
               </figure>
             ))}
           </aside>
+        </div>
+
+        <div className="mt-14 border-t border-border pt-12">
+          <h3 className="font-heading text-[1.35em] leading-tight tracking-tight">
+            Документы Совета
+          </h3>
+          <p className="mt-3 max-w-[60ch] text-[0.92em] text-muted-foreground">
+            Учредительные документы, актуальный состав и&nbsp;годовые отчёты о&nbsp;работе.
+          </p>
+
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {COUNCIL_DOCS.map((d) => (
+              <li key={d.url}>
+                <a
+                  href={d.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col rounded-lg border border-border bg-background p-6 transition-colors hover:border-primary"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-secondary text-primary">
+                    <Icon name={d.icon} fallback="FileText" size={22} />
+                  </span>
+                  <h4 className="mt-4 font-heading text-[1.05em] leading-snug text-foreground">
+                    {d.title}
+                  </h4>
+                  <p className="mt-2 text-[0.88em] leading-[1.5] text-muted-foreground">
+                    {d.hint}
+                  </p>
+                  <span className="mt-auto flex items-center gap-2 pt-5 text-[0.82em] text-primary">
+                    {d.format} · {d.year}
+                    <Icon
+                      name="ArrowRight"
+                      size={15}
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
