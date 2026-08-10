@@ -228,36 +228,12 @@ export const COUNCIL_DOCS: CouncilDoc[] = [
 
 export const DOCUMENTS: DocItem[] = [
   {
-    title: 'Волонтёрство в субъектах РФ (сводная таблица)',
-    type: 'Методические материалы',
-    topic: 'Волонтёрство в психиатрии',
-    year: '2022',
-    format: 'PDF',
-    url: `${UP}/2022/02/1.-Volonterstvo-v-subektah-RF-svodnaya-tablitsa.pdf`,
-  },
-  {
     title: 'Методические рекомендации в сфере волонтёрства',
     type: 'Методические материалы',
     topic: 'Волонтёрство в психиатрии',
     year: '2022',
     format: 'PDF',
     url: `${UP}/2022/02/3.-Metodicheskie-rekomendatsii-v-sfere-volonterstva.pdf`,
-  },
-  {
-    title: 'Информация об организациях, участвующих в развитии волонтёрства в РФ',
-    type: 'Методические материалы',
-    topic: 'Волонтёрство в психиатрии',
-    year: '2022',
-    format: 'PDF',
-    url: `${UP}/2022/02/4.-Informatsiya-ob-organizatsiyah-uchastvuyuschih-v-razvitii-volonterstva.pdf`,
-  },
-  {
-    title: 'Перечень волонтёрских НКО (в отношении лиц с психическими особенностями)',
-    type: 'Методические материалы',
-    topic: 'Волонтёрство в психиатрии',
-    year: '2022',
-    format: 'PDF',
-    url: `${UP}/2022/02/5.-Perechen-volonterskih-NKO-v-otnoshenii-lits-s-psih.osobennostyami.pdf`,
   },
   {
     title: 'Положение о волонтёрской деятельности в НКО',

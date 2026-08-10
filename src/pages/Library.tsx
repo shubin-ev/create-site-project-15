@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Documents from '@/components/site/Documents';
 import Recommendations from '@/components/site/Recommendations';
+import Volunteers from '@/components/site/Volunteers';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 const LibraryPage = () => {
@@ -16,6 +17,7 @@ const LibraryPage = () => {
   return (
     <>
       <Documents query={query} onQueryChange={setQuery} topic={topic} onTopicChange={setTopic} />
+      <Volunteers />
       <Recommendations />
     </>
   );
