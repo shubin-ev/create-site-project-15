@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { CONTACT_EMAIL, HERO_TAGS, STATS } from '@/data/council';
 import { useNextMeeting } from '@/hooks/use-next-meeting';
+import { downloadMeetingIcs } from '@/lib/calendar';
 import { scrollToSection } from '@/lib/scroll';
 
 type HeroProps = {
@@ -110,14 +111,24 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
             <p className="mt-4 border-t border-border pt-4 leading-[1.45]">
               {next.title}. Ссылка на&nbsp;подключение предоставляется отдельно.
             </p>
-            <button
-              type="button"
-              onClick={() => scrollToSection('meetings')}
-              className="mt-4 inline-flex min-h-[24px] items-center gap-2 border-b border-primary/35 text-[0.88em] text-primary transition-colors hover:border-primary"
-            >
-              График заседаний
-              <Icon name="ArrowRight" size={16} />
-            </button>
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => downloadMeetingIcs(next)}
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-border px-4 text-[0.88em] text-primary transition-colors hover:border-primary"
+              >
+                <Icon name="CalendarPlus" size={16} />
+                Добавить в календарь
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToSection('meetings')}
+                className="inline-flex min-h-[44px] items-center gap-2 border-b border-primary/35 text-[0.88em] text-primary transition-colors hover:border-primary"
+              >
+                График заседаний
+                <Icon name="ArrowRight" size={16} />
+              </button>
+            </div>
           </div>
 
           <p className="mt-6 border-l border-border pl-4 text-[0.88em] leading-[1.5] text-muted-foreground">

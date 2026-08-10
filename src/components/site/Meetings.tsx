@@ -1,9 +1,12 @@
 import Icon from '@/components/ui/icon';
+import { useToast } from '@/hooks/use-toast';
 import { MEETINGS } from '@/data/council';
 import { isPast, useNextMeeting } from '@/hooks/use-next-meeting';
+import { downloadMeetingIcs } from '@/lib/calendar';
 
 const Meetings = () => {
   const next = useNextMeeting();
+  const { toast } = useToast();
 
   return (
     <section id="meetings" className="scroll-mt-24 border-t border-border py-16 sm:py-20">
@@ -24,7 +27,7 @@ const Meetings = () => {
             return (
               <article
                 key={m.iso}
-                className={`rounded-lg border bg-surface p-6 transition-colors ${
+                className={`flex flex-col rounded-lg border bg-surface p-6 transition-colors ${
                   isNext
                     ? 'border-border border-l-[3px] border-l-teal hover:border-primary hover:border-l-teal'
                     : 'border-border hover:border-primary'
@@ -49,7 +52,26 @@ const Meetings = () => {
                 <p className="mt-4 border-t border-border pt-4 text-[0.9em] leading-[1.45]">
                   {m.title}
                 </p>
-                <p className="mt-2 text-[0.85em] leading-[1.45] text-muted-foreground">{m.note}</p>
+                <p className="mb-5 mt-2 text-[0.85em] leading-[1.45] text-muted-foreground">
+                  {m.note}
+                </p>
+
+                {!past && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      downloadMeetingIcs(m);
+                      toast({
+                        title: 'Событие сохранено',
+                        description: 'Откройте скачанный файл — заседание добавится в ваш календарь.',
+                      });
+                    }}
+                    className="mt-auto inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-border px-4 text-[0.85em] text-primary transition-colors hover:border-primary"
+                  >
+                    <Icon name="CalendarPlus" size={16} />
+                    Добавить в календарь
+                  </button>
+                )}
               </article>
             );
           })}
