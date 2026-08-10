@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Documents from "@/components/site/Documents";
+import InclusiveEducation from "@/components/site/InclusiveEducation";
 import Recommendations from "@/components/site/Recommendations";
 import Volunteers from "@/components/site/Volunteers";
 import { METHODICAL_GROUPS } from "@/data/recommendations";
@@ -24,6 +25,7 @@ const LibraryPage = () => {
         onTopicChange={setTopic}
       />
       <Volunteers />
+      <InclusiveEducation />
       <Recommendations
         id="recommendations"
         eyebrow="Рекомендации для НКО"

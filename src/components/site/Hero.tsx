@@ -33,6 +33,10 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
       navigate('/legal');
       return;
     }
+    if (tag === 'Инклюзивное образование') {
+      navigate('/library#inclusive-education');
+      return;
+    }
     onTopic(TAG_TOPICS[tag] ?? tag);
   };
 
