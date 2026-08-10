@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 import { CONTACT_EMAIL, HERO_TAGS, STATS } from '@/data/council';
 import { useNextMeeting } from '@/hooks/use-next-meeting';
 import { downloadMeetingIcs } from '@/lib/calendar';
-import { scrollToSection } from '@/lib/scroll';
+import { useNavigate } from 'react-router-dom';
 
 type HeroProps = {
   onSearch: (query: string) => void;
@@ -20,25 +20,20 @@ const TAG_TOPICS: Record<string, string> = {
 const Hero = ({ onSearch, onTopic }: HeroProps) => {
   const [value, setValue] = useState('');
   const next = useNextMeeting();
+  const navigate = useNavigate();
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
     onSearch(value);
-    scrollToSection('documents');
   };
 
   const pickTag = (tag: string) => {
     setValue('');
-    if (tag === 'Нормативно-правовые акты') {
-      scrollToSection('legal');
-      return;
-    }
-    if (tag === 'Общественный контроль') {
-      scrollToSection('control');
+    if (tag === 'Нормативно-правовые акты' || tag === 'Общественный контроль') {
+      navigate('/legal');
       return;
     }
     onTopic(TAG_TOPICS[tag] ?? tag);
-    scrollToSection('documents');
   };
 
   return (
@@ -130,7 +125,7 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
               </button>
               <button
                 type="button"
-                onClick={() => scrollToSection('meetings')}
+                onClick={() => navigate('/meetings')}
                 className="inline-flex min-h-[44px] items-center gap-2 border-b border-primary/35 text-[0.88em] text-primary transition-colors hover:border-primary"
               >
                 График заседаний

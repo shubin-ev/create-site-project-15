@@ -6,16 +6,12 @@ export const CONTACT_PHONE_HREF = '+74956401637';
 export const SOURCE_SITE = 'https://mental-health-russia.ru';
 
 export const NAV_LINKS = [
-  { id: 'about', label: 'О Совете' },
-  { id: 'members', label: 'Состав' },
-  { id: 'groups', label: 'Рабочие группы' },
-  { id: 'documents', label: 'Документы' },
-  { id: 'legal', label: 'НПА' },
-  { id: 'control', label: 'Контроль' },
-  { id: 'recommendations', label: 'Рекомендации НКО' },
-  { id: 'authorities', label: 'Органы власти' },
-  { id: 'meetings', label: 'Заседания' },
-  { id: 'contacts', label: 'Контакты' },
+  { path: '/about', label: 'О Совете' },
+  { path: '/meetings', label: 'Заседания' },
+  { path: '/legal', label: 'Правовая база' },
+  { path: '/library', label: 'Библиотека НКО' },
+  { path: '/authorities', label: 'Органы власти' },
+  { path: '/contacts', label: 'Контакты' },
 ];
 
 export const HERO_TAGS = [

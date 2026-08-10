@@ -1,16 +1,22 @@
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF, LOGO_URL, NAV_LINKS } from '@/data/council';
-import { scrollToSection } from '@/lib/scroll';
+import { Link } from 'react-router-dom';
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+  LOGO_URL,
+  NAV_LINKS,
+} from '@/data/council';
 
 const Footer = () => (
   <footer className="bg-header text-header-foreground">
     <div className="section-shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]">
       <div>
-        <div className="flex items-center gap-3.5">
+        <Link to="/" className="flex items-center gap-3.5">
           <img src={LOGO_URL} alt="" className="h-12 w-12 flex-none object-contain" />
           <span className="max-w-[26ch] font-heading text-[0.95em] font-medium leading-tight">
             Совет НКО в сфере охраны психического здоровья при Российском обществе психиатров
           </span>
-        </div>
+        </Link>
         <p className="mt-5 max-w-[46ch] text-[0.88em] leading-[1.5] text-header-foreground/70">
           Информационный ресурс для представителей некоммерческих организаций: документы, состав,
           заседания и материалы Совета.
@@ -21,14 +27,13 @@ const Footer = () => (
         <h3 className="font-heading text-[0.95em] font-medium">Разделы</h3>
         <ul className="mt-4 space-y-1">
           {NAV_LINKS.map((l) => (
-            <li key={l.id}>
-              <button
-                type="button"
-                onClick={() => scrollToSection(l.id)}
+            <li key={l.path}>
+              <Link
+                to={l.path}
                 className="flex min-h-[36px] items-center text-[0.88em] text-header-foreground/80 transition-colors hover:text-header-hover"
               >
                 {l.label}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>

@@ -1,11 +1,18 @@
-
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { Toaster } from '@/components/ui/toaster';
+import { Toaster as Sonner } from '@/components/ui/sonner';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Layout from '@/components/site/Layout';
+import HashRedirect from '@/components/site/HashRedirect';
+import Index from './pages/Index';
+import AboutPage from './pages/About';
+import MeetingsPage from './pages/Meetings';
+import LegalPage from './pages/Legal';
+import LibraryPage from './pages/Library';
+import AuthoritiesPage from './pages/Authorities';
+import ContactsPage from './pages/Contacts';
+import NotFound from './pages/NotFound';
 
 const queryClient = new QueryClient();
 
@@ -15,9 +22,23 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <HashRedirect />
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route element={<Layout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/meetings" element={<MeetingsPage />} />
+            <Route path="/legal" element={<LegalPage />} />
+            <Route path="/library" element={<LibraryPage />} />
+            <Route path="/authorities" element={<AuthoritiesPage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/members" element={<Navigate to="/about" replace />} />
+            <Route path="/groups" element={<Navigate to="/about" replace />} />
+            <Route path="/reports" element={<Navigate to="/about" replace />} />
+            <Route path="/documents" element={<Navigate to="/library" replace />} />
+            <Route path="/recommendations" element={<Navigate to="/library" replace />} />
+            <Route path="/control" element={<Navigate to="/legal" replace />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
