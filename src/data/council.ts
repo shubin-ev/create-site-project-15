@@ -11,6 +11,7 @@ export const NAV_LINKS = [
   { id: 'groups', label: 'Рабочие группы' },
   { id: 'documents', label: 'Документы' },
   { id: 'legal', label: 'НПА' },
+  { id: 'control', label: 'Контроль' },
   { id: 'recommendations', label: 'Рекомендации НКО' },
   { id: 'authorities', label: 'Органы власти' },
   { id: 'meetings', label: 'Заседания' },
@@ -356,14 +357,6 @@ export const DOCUMENTS: DocItem[] = [
     year: '2022',
     format: 'DOCX',
     url: `${UP}/2022/02/2.-Subekty-Obschestvennogo-kontrolya-tselizadachipolnomochiya.docx`,
-  },
-  {
-    title: 'Формы и порядок осуществления Общественного контроля',
-    type: 'Методические материалы',
-    topic: 'Общественный контроль в психиатрии',
-    year: '2022',
-    format: 'DOCX',
-    url: `${UP}/2022/02/3.-Formy-i-poryadok-osuschestvleniya-Obschestvennogo-kontrolya.docx`,
   },
   {
     title: 'В помощь начинающему волонтёру',

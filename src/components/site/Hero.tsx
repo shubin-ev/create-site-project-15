@@ -33,6 +33,10 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
       scrollToSection('legal');
       return;
     }
+    if (tag === 'Общественный контроль') {
+      scrollToSection('control');
+      return;
+    }
     onTopic(TAG_TOPICS[tag] ?? tag);
     scrollToSection('documents');
   };
