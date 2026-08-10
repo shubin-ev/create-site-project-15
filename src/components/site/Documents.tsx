@@ -46,7 +46,10 @@ const Documents = ({ query, onQueryChange, topic, onTopicChange }: DocumentsProp
     <li key={`${d.url}-${d.topic}`}>
       <article className="flex gap-4 rounded-lg border border-border bg-background p-5 transition-colors hover:border-primary">
         <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-secondary text-primary">
-          <Icon name={d.format === 'DOCX' ? 'FileText' : 'FileType2'} size={22} />
+          <Icon
+            name={d.format === 'DOCX' ? 'FileText' : d.format === 'XLSX' ? 'Table2' : 'FileType2'}
+            size={22}
+          />
         </span>
         <div className="min-w-0">
           <h4 className="font-heading text-[1.05em] leading-snug">

@@ -118,7 +118,7 @@ export const DOC_TOPICS = [
   'Материалы регионов',
 ];
 
-export const DOC_YEARS = ['Все годы', '2025', '2023', '2022', '2021'];
+export const DOC_YEARS = ['Все годы', '2026', '2023', '2022', '2021'];
 
 export const DOCUMENTS: DocItem[] = [
   {
@@ -138,12 +138,20 @@ export const DOCUMENTS: DocItem[] = [
     url: `${UP}/2021/11/Svod-eticheskih-printsipov-Soveta-NKO.pdf`,
   },
   {
-    title: 'Состав Совета НКО',
+    title: 'Состав Совета НКО при РОП (редакция от 06.08.2026)',
     type: 'Состав',
     topic: 'Документы Совета',
-    year: '2025',
-    format: 'PDF',
-    url: `${UP}/2025/02/NKO-02.2025.pdf`,
+    year: '2026',
+    format: 'XLSX',
+    url: '/docs/Sostav-Soveta-NKO-pri-ROP-06.08.2026.xlsx',
+  },
+  {
+    title: 'Оргкомитет Совета НКО при РОП с 22.05.2026',
+    type: 'Состав',
+    topic: 'Документы Совета',
+    year: '2026',
+    format: 'DOCX',
+    url: '/docs/Orgkomitet-Soveta-NKO-pri-ROP-2026.docx',
   },
   {
     title: 'Отчёт о работе Совета НКО при РОП за 2022 год',
@@ -487,20 +495,12 @@ export const DOCUMENTS: DocItem[] = [
   },
 
   {
-    title: 'Состав рабочей группы «Волонтёрство в психиатрии»',
+    title: 'Рабочие группы Совета НКО при РОП (редакция от 06.08.2026)',
     type: 'Состав',
     topic: 'Рабочие группы',
-    year: '2021',
-    format: 'PDF',
-    url: `${UP}/2021/11/sostav-rabochej-gruppy-Volonterstvo-v-psihiatrii.pdf`,
-  },
-  {
-    title: 'Состав рабочей группы по сопровождаемому проживанию и трудовой занятости',
-    type: 'Состав',
-    topic: 'Рабочие группы',
-    year: '2021',
-    format: 'PDF',
-    url: `${UP}/2021/12/Sostav-RG-po-soprovozhdaemomu-prozhivaniyu-i-trudovoj-zanyatosti95.pdf`,
+    year: '2026',
+    format: 'DOCX',
+    url: '/docs/Rabochie-gruppy-Soveta-NKO-pri-ROP-06.08.2026.docx',
   },
   {
     title: 'Работа с волонтёрами',
