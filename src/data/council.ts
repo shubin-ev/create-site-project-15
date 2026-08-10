@@ -69,15 +69,43 @@ export const QUOTES = [
   },
 ];
 
+export type MeetingFile = {
+  label: string;
+  url: string;
+};
+
 export type Meeting = {
   date: string;
   iso: string;
   title: string;
   format: string;
   note: string;
+  files?: MeetingFile[];
 };
 
 export const MEETINGS: Meeting[] = [
+  {
+    date: '19 марта 2026',
+    iso: '2026-03-19',
+    title: 'Рабочее совещание Совета НКО при РОП',
+    format: 'Онлайн, ZOOM',
+    note: 'Подготовка к конференции «Психосоциальная реабилитация» в рамках XVIII Съезда психиатров России, организационные вопросы, обсуждение кандидатур на должность председателя Совета, проект клинических рекомендаций по РАС. Участвовали 37 человек.',
+    files: [
+      { label: 'Повестка заседания', url: '/docs/Povestka-zasedaniya-19.03.2026.docx' },
+      { label: 'Протокол заседания', url: '/docs/Protokol-zasedaniya-19.03.2026.docx' },
+    ],
+  },
+  {
+    date: '11 июня 2026',
+    iso: '2026-06-11',
+    title: 'Заседание Совета НКО при РОП',
+    format: 'Онлайн, ZOOM',
+    note: 'Первое заседание под председательством О. В. Лиманкина: актуализация состава Совета, создание трёх рабочих групп, клинические рекомендации по РАС, доклад Н. И. Бурых о взаимодействии НКО с соцзащитой.',
+    files: [
+      { label: 'Повестка заседания', url: '/docs/Povestka-zasedaniya-11.06.2026.docx' },
+      { label: 'Протокол заседания', url: '/docs/Protokol-zasedaniya-11.06.2026.docx' },
+    ],
+  },
   {
     date: '24 сентября 2026',
     iso: '2026-09-24',
@@ -144,6 +172,38 @@ export const DOC_TOPICS = [
 export const DOC_YEARS = ['Все годы', '2026', '2023', '2022', '2021'];
 
 export const DOCUMENTS: DocItem[] = [
+  {
+    title: 'Протокол заседания Совета НКО при РОП от 11.06.2026',
+    type: 'Протокол',
+    topic: 'Документы Совета',
+    year: '2026',
+    format: 'DOCX',
+    url: '/docs/Protokol-zasedaniya-11.06.2026.docx',
+  },
+  {
+    title: 'Повестка заседания Совета НКО при РОП от 11.06.2026',
+    type: 'Повестка',
+    topic: 'Документы Совета',
+    year: '2026',
+    format: 'DOCX',
+    url: '/docs/Povestka-zasedaniya-11.06.2026.docx',
+  },
+  {
+    title: 'Протокол рабочего совещания Совета НКО при РОП от 19.03.2026',
+    type: 'Протокол',
+    topic: 'Документы Совета',
+    year: '2026',
+    format: 'DOCX',
+    url: '/docs/Protokol-zasedaniya-19.03.2026.docx',
+  },
+  {
+    title: 'Повестка заседания Совета НКО при РОП от 19.03.2026',
+    type: 'Повестка',
+    topic: 'Документы Совета',
+    year: '2026',
+    format: 'DOCX',
+    url: '/docs/Povestka-zasedaniya-19.03.2026.docx',
+  },
   {
     title: 'Положение о Совете НКО при Российском обществе психиатров',
     type: 'Положение',
