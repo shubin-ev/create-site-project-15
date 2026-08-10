@@ -7,9 +7,12 @@ const About = () => {
   const tab = ABOUT_TABS.find((t) => t.id === active) ?? ABOUT_TABS[0];
 
   return (
-    <section id="about" className="scroll-mt-24 border-t border-border bg-surface py-16 sm:py-20">
+    <section id="about" className="scroll-mt-24 bg-surface py-14 sm:py-16">
       <div className="section-shell">
-        <p className="eyebrow mb-6">О Совете</p>
+        <p className="eyebrow mb-5">О Совете</p>
+        <h1 className="mb-10 max-w-[20ch] text-[2.1em] font-medium leading-[1.15] tracking-tight">
+          Совет НКО в&nbsp;сфере охраны психического здоровья
+        </h1>
 
         <div className="grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-16">
           <div>

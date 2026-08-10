@@ -2,7 +2,6 @@ import About from '@/components/site/About';
 import Members from '@/components/site/Members';
 import WorkGroups from '@/components/site/WorkGroups';
 import Reports from '@/components/site/Reports';
-import PageHero from '@/components/site/PageHero';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 const AboutPage = () => {
@@ -13,17 +12,6 @@ const AboutPage = () => {
 
   return (
     <>
-      <PageHero
-        eyebrow="О Совете"
-        title="Совет НКО в сфере охраны психического здоровья"
-        description="Кто входит в Совет, чем занимаются рабочие группы, какие документы регулируют работу и что сделано за каждый год."
-        links={[
-          { id: 'about', label: 'О Совете' },
-          { id: 'members', label: 'Состав' },
-          { id: 'groups', label: 'Рабочие группы' },
-          { id: 'reports', label: 'Отчёты' },
-        ]}
-      />
       <About />
       <Members />
       <WorkGroups />
