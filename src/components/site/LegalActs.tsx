@@ -142,13 +142,13 @@ const LegalActs = () => {
   return (
     <section
       id="legal"
-      className="scroll-mt-24 border-t border-border bg-surface py-16 sm:py-20"
+      className="scroll-mt-24 bg-surface py-14 sm:py-16"
     >
       <div className="section-shell">
-        <p className="eyebrow mb-6">Нормативно-правовые акты</p>
-        <h2 className="max-w-[26ch] text-[1.9em] leading-tight">
+        <p className="eyebrow mb-5">Нормативно-правовые акты</p>
+        <h1 className="max-w-[26ch] text-[2.1em] font-medium leading-[1.15] tracking-tight">
           Реестр законодательства для работы НКО в&nbsp;сфере психического здоровья
-        </h2>
+        </h1>
         <p className="mt-4 max-w-[62ch] text-muted-foreground">
           {LEGAL_ACTS.length} нормативных актов по&nbsp;волонтёрству, инклюзивному образованию
           и&nbsp;общественному контролю. Каждый акт ведёт на&nbsp;официальный текст —

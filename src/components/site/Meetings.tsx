@@ -60,12 +60,12 @@ const Meetings = () => {
   };
 
   return (
-    <section id="meetings" className="scroll-mt-24 border-t border-border py-16 sm:py-20">
+    <section id="meetings" className="scroll-mt-24 py-14 sm:py-16">
       <div className="section-shell">
-        <p className="eyebrow mb-6">Мероприятия и заседания</p>
-        <h2 className="max-w-[26ch] text-[1.9em] leading-tight">
+        <p className="eyebrow mb-5">Мероприятия и заседания</p>
+        <h1 className="max-w-[26ch] text-[2.1em] font-medium leading-[1.15] tracking-tight">
           Заседания проходят онлайн на&nbsp;платформе ZOOM в&nbsp;9:00 по&nbsp;Москве
-        </h2>
+        </h1>
         <p className="mt-4 max-w-[60ch] text-muted-foreground">
           Утверждённый график заседаний Совета НКО при&nbsp;РОП. Заседания рабочих групп проходят
           по&nbsp;отдельному расписанию, ссылки на&nbsp;подключение рассылаются участникам.

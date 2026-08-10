@@ -57,13 +57,13 @@ const Contacts = () => {
     'h-[52px] w-full rounded-lg border bg-surface px-4 transition-colors placeholder:text-tertiary hover:border-primary focus:border-primary';
 
   return (
-    <section id="contacts" className="scroll-mt-24 border-t border-border py-16 sm:py-20">
+    <section id="contacts" className="scroll-mt-24 py-14 sm:py-16">
       <div className="section-shell grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16">
         <div>
-          <p className="eyebrow mb-6">Контакты и обратная связь</p>
-          <h2 className="max-w-[20ch] text-[1.9em] leading-tight">
+          <p className="eyebrow mb-5">Контакты и обратная связь</p>
+          <h1 className="max-w-[20ch] text-[2.1em] font-medium leading-[1.15] tracking-tight">
 Напишите нам
-          </h2>
+          </h1>
           <p className="mt-4 max-w-[52ch] text-muted-foreground">
             Ответим на&nbsp;вопросы о&nbsp;документах, порядке вступления в&nbsp;Совет и&nbsp;работе
             рабочих групп.

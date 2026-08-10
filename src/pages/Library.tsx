@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Documents from '@/components/site/Documents';
 import Recommendations from '@/components/site/Recommendations';
-import PageHero from '@/components/site/PageHero';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 const LibraryPage = () => {
@@ -16,15 +15,6 @@ const LibraryPage = () => {
 
   return (
     <>
-      <PageHero
-        eyebrow="Библиотека НКО"
-        title="Документы и методические материалы"
-        description="Материалы Совета и рабочих групп, а также памятки, образцы и методички, собранные некоммерческими организациями регионов."
-        links={[
-          { id: 'documents', label: 'Документы Совета' },
-          { id: 'recommendations', label: 'Рекомендации регионов' },
-        ]}
-      />
       <Documents query={query} onQueryChange={setQuery} topic={topic} onTopicChange={setTopic} />
       <Recommendations />
     </>

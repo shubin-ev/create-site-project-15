@@ -77,13 +77,13 @@ const Documents = ({ query, onQueryChange, topic, onTopicChange }: DocumentsProp
   return (
     <section
       id="documents"
-      className="scroll-mt-24 border-t border-border bg-surface py-16 sm:py-20"
+      className="scroll-mt-24 bg-surface py-14 sm:py-16"
     >
       <div className="section-shell">
-        <p className="eyebrow mb-6">Документы и материалы</p>
-        <h2 className="max-w-[24ch] text-[1.9em] leading-tight">
+        <p className="eyebrow mb-5">Документы и материалы</p>
+        <h1 className="max-w-[24ch] text-[2.1em] font-medium leading-[1.15] tracking-tight">
           Методические материалы и практики регионов
-        </h2>
+        </h1>
         <p className="mt-4 max-w-[60ch] text-muted-foreground">
           Методички, формы документов и&nbsp;наработки регионов по&nbsp;волонтёрству, инклюзивному
           образованию и&nbsp;общественному контролю. Выберите направление или воспользуйтесь

@@ -55,13 +55,13 @@ const Authorities = () => {
   return (
     <section
       id="authorities"
-      className="scroll-mt-24 border-t border-border bg-surface py-16 sm:py-20"
+      className="scroll-mt-24 bg-surface py-14 sm:py-16"
     >
       <div className="section-shell">
-        <p className="eyebrow mb-6">Органы власти</p>
-        <h2 className="max-w-[26ch] text-[1.9em] leading-tight">
+        <p className="eyebrow mb-5">Органы власти</p>
+        <h1 className="max-w-[26ch] text-[2.1em] font-medium leading-[1.15] tracking-tight">
           Справочник органов власти {AUTHORITY_REGIONS.length}&nbsp;регионов России
-        </h2>
+        </h1>
         <p className="mt-4 max-w-[62ch] text-muted-foreground">
           Контакты глав регионов, общественных палат и&nbsp;профильных ведомств: здравоохранение,
           труд и&nbsp;социальная защита, образование, культура, спорт. У&nbsp;каждой карточки
