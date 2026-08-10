@@ -10,6 +10,8 @@ export const NAV_LINKS = [
   { id: 'members', label: 'Состав' },
   { id: 'groups', label: 'Рабочие группы' },
   { id: 'documents', label: 'Документы' },
+  { id: 'recommendations', label: 'Рекомендации НКО' },
+  { id: 'authorities', label: 'Органы власти' },
   { id: 'meetings', label: 'Заседания' },
   { id: 'contacts', label: 'Контакты' },
 ];
@@ -25,7 +27,7 @@ export const STATS = [
   { value: '114', label: 'члена Совета' },
   { value: '84', label: 'региона РФ' },
   { value: '3', label: 'рабочие группы' },
-  { value: '51', label: 'документ в каталоге' },
+  { value: '810', label: 'записей в каталогах' },
 ];
 
 export const ABOUT_TABS = [

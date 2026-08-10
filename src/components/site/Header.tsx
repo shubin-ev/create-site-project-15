@@ -36,18 +36,18 @@ const Header = () => {
           className="flex items-center gap-3.5 text-left"
         >
           <img src={LOGO_URL} alt="" className="h-10 w-11 flex-none object-contain" />
-          <span className="max-w-[15ch] font-heading text-[0.88em] font-medium leading-tight">
+          <span className="w-[9.5rem] font-heading text-[0.85em] font-medium leading-tight">
             Совет НКО при&nbsp;РОП
           </span>
         </button>
 
-        <nav className="ml-auto hidden items-center gap-7 lg:flex">
+        <nav className="ml-auto hidden items-center gap-5 lg:flex">
           {NAV_LINKS.map((link) => (
             <button
               key={link.id}
               type="button"
               onClick={() => go(link.id)}
-              className={`py-1.5 text-[0.88em] transition-colors hover:text-header-hover ${
+              className={`whitespace-nowrap py-1.5 text-[0.85em] transition-colors hover:text-header-hover ${
                 active === link.id ? 'text-teal' : 'text-header-foreground'
               }`}
             >
@@ -56,7 +56,7 @@ const Header = () => {
           ))}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex min-h-[44px] items-center rounded-lg border border-header-foreground/45 px-4 text-[0.88em] transition-colors hover:border-teal hover:text-teal"
+            className="hidden min-h-[44px] items-center whitespace-nowrap rounded-lg border border-header-foreground/45 px-4 text-[0.85em] transition-colors hover:border-teal hover:text-teal xl:inline-flex"
           >
             {CONTACT_EMAIL}
           </a>
@@ -67,7 +67,7 @@ const Header = () => {
           aria-label={open ? 'Закрыть меню' : 'Открыть меню'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-lg border border-header-foreground/45 lg:hidden"
+          className="ml-auto inline-flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-header-foreground/45 lg:hidden"
         >
           <Icon name={open ? 'X' : 'Menu'} size={22} />
         </button>
