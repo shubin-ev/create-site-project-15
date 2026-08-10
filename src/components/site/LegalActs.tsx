@@ -31,6 +31,7 @@ const LegalActs = () => {
   const [sphere, setSphere] = useState(LEGAL_SPHERES[0]);
   const [level, setLevel] = useState(LEGAL_LEVELS[0]);
   const [query, setQuery] = useState('');
+  const [onlyValid, setOnlyValid] = useState(false);
   const [limit, setLimit] = useState(PAGE);
   const [openNote, setOpenNote] = useState<string | null>(null);
 
@@ -39,10 +40,13 @@ const LegalActs = () => {
     return LEGAL_ACTS.filter((a) => {
       if (sphere !== LEGAL_SPHERES[0] && a.sphere !== sphere) return false;
       if (level !== LEGAL_LEVELS[0] && a.level !== level) return false;
+      if (onlyValid && a.status) return false;
       if (q && !`${a.title} ${a.note} ${a.number}`.toLowerCase().includes(q)) return false;
       return true;
     });
-  }, [sphere, level, query]);
+  }, [sphere, level, query, onlyValid]);
+
+  const outdated = LEGAL_ACTS.filter((a) => a.status).length;
 
   const reset = (fn: () => void) => {
     fn();
@@ -75,12 +79,31 @@ const LegalActs = () => {
             <span className="inline-flex h-6 items-center rounded-full bg-secondary px-3 text-secondary-foreground">
               {a.kind}
             </span>
+            {a.status && (
+              <span className="inline-flex h-6 items-center gap-1.5 rounded-full bg-destructive/10 px-3 text-destructive">
+                <Icon name="CircleAlert" size={13} />
+                {a.status}
+              </span>
+            )}
             {a.year && <span className="text-muted-foreground">{a.year}</span>}
             {a.number && <span className="text-muted-foreground">№ {a.number}</span>}
             <span className="text-muted-foreground">· {a.sphere}</span>
           </div>
 
-          <h4 className="mt-3 text-[0.98em] leading-[1.45]">{a.title}</h4>
+          <h4
+            className={`mt-3 text-[0.98em] leading-[1.45] ${
+              a.status ? 'text-muted-foreground' : ''
+            }`}
+          >
+            {a.title}
+          </h4>
+
+          {a.replacedBy && (
+            <p className="mt-2 flex items-start gap-2 text-[0.85em] leading-[1.5] text-foreground">
+              <Icon name="ArrowRightLeft" size={15} className="mt-0.5 flex-none text-teal" />
+              Действует вместо него: {a.replacedBy}
+            </p>
+          )}
 
           {a.note && (
             <div className="mt-3">
@@ -156,6 +179,11 @@ const LegalActs = () => {
           </div>
           <div className="flex flex-wrap gap-2">
             {LEGAL_LEVELS.map((l) => chip(l, l === level, () => reset(() => setLevel(l))))}
+            {chip(
+              `Только действующие · скрыть ${outdated}`,
+              onlyValid,
+              () => reset(() => setOnlyValid(!onlyValid)),
+            )}
           </div>
         </div>
 
