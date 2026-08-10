@@ -2,22 +2,48 @@ import { useMemo, useState } from "react";
 import Icon from "@/components/ui/icon";
 import {
   RECOMMENDATIONS,
-  RECOMMENDATION_GROUPS,
   RECOMMENDATION_REGIONS,
 } from "@/data/recommendations";
 
 const PAGE = 9;
 
-const Recommendations = () => {
+type RecommendationsProps = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  groups: string[];
+  buttonLabel: string;
+};
+
+const Recommendations = ({
+  id,
+  eyebrow,
+  title,
+  description,
+  groups,
+  buttonLabel,
+}: RecommendationsProps) => {
   const [query, setQuery] = useState("");
   const [region, setRegion] = useState("all");
   const [group, setGroup] = useState("all");
   const [limit, setLimit] = useState(PAGE);
   const [open, setOpen] = useState(false);
 
+  const scope = useMemo(
+    () => RECOMMENDATIONS.filter((r) => groups.includes(r.group)),
+    [groups],
+  );
+
+  const regions = useMemo(
+    () =>
+      RECOMMENDATION_REGIONS.filter((r) => scope.some((i) => i.region === r)),
+    [scope],
+  );
+
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return RECOMMENDATIONS.filter((r) => {
+    return scope.filter((r) => {
       const byQuery =
         !q ||
         `${r.title} ${r.desc} ${r.org} ${r.kind} ${r.region}`
@@ -27,7 +53,7 @@ const Recommendations = () => {
       const byGroup = group === "all" || r.group === group;
       return byQuery && byRegion && byGroup;
     });
-  }, [query, region, group]);
+  }, [query, region, group, scope]);
 
   const visible = list.slice(0, limit);
   const hasFilters = Boolean(query) || region !== "all" || group !== "all";
@@ -48,21 +74,15 @@ const Recommendations = () => {
 
   return (
     <section
-      id="recommendations"
-      className="scroll-mt-24 border-t border-border py-16 sm:py-20"
+      id={id}
+      className="scroll-mt-24 border-t border-border py-14 sm:py-16"
     >
       <div className="section-shell">
-        <p className="eyebrow mb-6">Рекомендации для НКО</p>
-        <h2 className="max-w-[26ch] text-[1.9em] leading-tight">
-          Памятки, образцы документов и&nbsp;методички регионов
+        <p className="eyebrow mb-5">{eyebrow}</p>
+        <h2 className="max-w-[26ch] text-[1.9em] font-medium leading-tight tracking-tight">
+          {title}
         </h2>
-        <p className="mt-4 max-w-[62ch] text-muted-foreground">
-          {RECOMMENDATIONS.length} практических материалов от&nbsp;ресурсных
-          центров, министерств и&nbsp;управлений Минюста из&nbsp;
-          {RECOMMENDATION_REGIONS.length}&nbsp;регионов: как вести отчётность,
-          оформить устав, войти в&nbsp;реестр поставщиков услуг и&nbsp;получить
-          поддержку.
-        </p>
+        <p className="mt-4 max-w-[62ch] text-muted-foreground">{description}</p>
 
         <button
           type="button"
@@ -70,9 +90,7 @@ const Recommendations = () => {
           onClick={() => setOpen((v) => !v)}
           className="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-lg border border-border bg-surface px-5 font-heading text-[0.9em] transition-colors hover:border-primary"
         >
-          {open
-            ? "Свернуть материалы"
-            : `Подробнее — ${RECOMMENDATIONS.length} материалов`}
+          {open ? "Свернуть список" : `Подробнее — ${scope.length} ${buttonLabel}`}
           <Icon name={open ? "ChevronUp" : "ChevronDown"} size={18} />
         </button>
 
@@ -107,7 +125,7 @@ const Recommendations = () => {
                   className="h-[52px] w-full rounded-lg border border-border bg-surface px-4 transition-colors hover:border-primary focus:border-primary"
                 >
                   <option value="all">Все регионы</option>
-                  {RECOMMENDATION_REGIONS.map((r) => (
+                  {regions.map((r) => (
                     <option key={r} value={r}>
                       {r}
                     </option>
@@ -128,7 +146,7 @@ const Recommendations = () => {
               >
                 Все материалы
               </button>
-              {RECOMMENDATION_GROUPS.map((g) => (
+              {groups.map((g) => (
                 <button
                   key={g}
                   type="button"
