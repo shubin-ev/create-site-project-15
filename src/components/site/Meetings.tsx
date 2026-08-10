@@ -13,11 +13,11 @@ const Meetings = () => {
           Заседания проходят онлайн на&nbsp;платформе ZOOM в&nbsp;9:00 по&nbsp;Москве
         </h2>
         <p className="mt-4 max-w-[60ch] text-muted-foreground">
-          График заседаний Совета НКО при&nbsp;РОП на&nbsp;2026 год. Заседания рабочих групп проходят
+          Утверждённый график заседаний Совета НКО при&nbsp;РОП. Заседания рабочих групп проходят
           по&nbsp;отдельному расписанию, ссылки на&nbsp;подключение рассылаются участникам.
         </p>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {MEETINGS.map((m) => {
             const past = isPast(m.iso);
             const isNext = m.iso === next.iso;
