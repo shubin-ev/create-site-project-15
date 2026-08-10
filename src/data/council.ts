@@ -351,14 +351,6 @@ export const DOCUMENTS: DocItem[] = [
     url: `${UP}/2022/02/1.-Osnovnye-polozheniya-ob-Obschestvennom-kontrole-v-RF.docx`,
   },
   {
-    title: 'Субъекты Общественного контроля (цели, задачи, полномочия)',
-    type: 'Методические материалы',
-    topic: 'Общественный контроль в психиатрии',
-    year: '2022',
-    format: 'DOCX',
-    url: `${UP}/2022/02/2.-Subekty-Obschestvennogo-kontrolya-tselizadachipolnomochiya.docx`,
-  },
-  {
     title: 'В помощь начинающему волонтёру',
     org: 'СПбБОО «Перспективы»',
     type: 'Методические материалы',
