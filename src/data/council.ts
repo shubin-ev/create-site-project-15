@@ -1,8 +1,8 @@
 export const LOGO_URL = '/logo-council.svg';
 
-export const CONTACT_EMAIL = 'nko@mental-health-russia.ru';
-export const CONTACT_TELEGRAM = 'https://t.me/Yuriy_Osadshiy';
-export const CONTACT_TELEGRAM_LABEL = '@Yuriy_Osadshiy';
+export const CONTACT_EMAIL = 'info@mental-health-russia.ru';
+export const CONTACT_PHONE = '+7 (495) 640-16-37';
+export const CONTACT_PHONE_HREF = '+74956401637';
 export const SOURCE_SITE = 'https://mental-health-russia.ru';
 
 export const NAV_LINKS = [

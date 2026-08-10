@@ -1,0 +1,25 @@
+{
+  "tests": [
+    {
+      "name": "CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Отклоняет пустую форму",
+      "method": "POST",
+      "path": "/",
+      "body": { "name": "", "email": "", "message": "" },
+      "expectedStatus": 400,
+      "expectedBody": { "error": "string" },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Отклоняет GET",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 405
+    }
+  ]
+}
