@@ -2889,7 +2889,7 @@ export const AUTHORITIES: Authority[] = [
     address: '127006, г. Москва, Оружейный переулок, д. 43 стр.1',
     phone: '(495) 777-77-77 ; Электронная',
     email: 'zdrav@mos.ru',
-    site: 'https://mosgorzdrav.ru/ru-RU/citizens/appeal.html, https://mosgorzdrav.ru/',
+    site: 'https://mosgorzdrav.ru/',
     letter: 'Руководителю Департамента здравоохранения города Москвы\n\n\n127006, г. Москва, Оружейный переулок, д. 43 стр.1',
   },
   {
