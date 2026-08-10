@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
-import { ABOUT_TABS, QUOTES, WORK_GROUPS } from '@/data/council';
+import { ABOUT_TABS, QUOTES } from '@/data/council';
 
 const About = () => {
   const [active, setActive] = useState(ABOUT_TABS[0].id);
@@ -44,31 +44,6 @@ const About = () => {
               ))}
             </div>
 
-            <h3 className="mt-12 font-heading text-[1.35em]">Рабочие группы</h3>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {WORK_GROUPS.map((g) => (
-                <article
-                  key={g.title}
-                  className="flex flex-col rounded-lg border border-border bg-background p-5 transition-colors hover:border-primary"
-                >
-                  <h4 className="font-heading text-[1.05em] leading-snug">{g.title}</h4>
-                  <p className="mt-3 text-[0.88em] leading-[1.5] text-muted-foreground">{g.text}</p>
-                  <p className="mt-4 flex items-start gap-2 text-[0.85em] text-muted-foreground">
-                    <Icon name="Clock" size={15} className="mt-0.5 flex-none" />
-                    {g.schedule}
-                  </p>
-                  <a
-                    href={g.docUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 self-start border-t border-border pt-4 text-[0.88em] text-primary"
-                  >
-                    Состав рабочей группы
-                    <Icon name="ArrowUpRight" size={16} />
-                  </a>
-                </article>
-              ))}
-            </div>
           </div>
 
           <aside className="space-y-6">

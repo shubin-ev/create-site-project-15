@@ -43,9 +43,9 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
           </h1>
 
           <p className="mt-6 max-w-[52ch] leading-[1.55] text-muted-foreground">
-            Документы Совета, состав организационного комитета, график заседаний и&nbsp;методические
-            материалы регионов — в&nbsp;одном каталоге. В&nbsp;составе Совета руководители НКО
-            из&nbsp;85&nbsp;регионов России.
+            Документы Совета, состав и&nbsp;рабочие группы, график заседаний и&nbsp;методические
+            материалы регионов — в&nbsp;одном месте. В&nbsp;составе Совета 114&nbsp;руководителей
+            НКО из&nbsp;84&nbsp;регионов России.
           </p>
 
           <form onSubmit={submit} className="mt-12 flex max-w-[640px] flex-col gap-3 sm:flex-row">

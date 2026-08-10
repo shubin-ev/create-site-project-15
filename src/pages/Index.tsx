@@ -3,6 +3,7 @@ import Header from '@/components/site/Header';
 import Hero from '@/components/site/Hero';
 import About from '@/components/site/About';
 import Members from '@/components/site/Members';
+import WorkGroups from '@/components/site/WorkGroups';
 import Documents from '@/components/site/Documents';
 import Meetings from '@/components/site/Meetings';
 import Contacts from '@/components/site/Contacts';
@@ -29,6 +30,7 @@ const Index = () => {
         <Hero onSearch={search} onTopic={pickTopic} />
         <About />
         <Members />
+        <WorkGroups />
         <Documents
           query={docQuery}
           onQueryChange={setDocQuery}
