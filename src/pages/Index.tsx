@@ -5,6 +5,7 @@ import About from '@/components/site/About';
 import Members from '@/components/site/Members';
 import WorkGroups from '@/components/site/WorkGroups';
 import Documents from '@/components/site/Documents';
+import LegalActs from '@/components/site/LegalActs';
 import Recommendations from '@/components/site/Recommendations';
 import Authorities from '@/components/site/Authorities';
 import Meetings from '@/components/site/Meetings';
@@ -39,6 +40,7 @@ const Index = () => {
           topic={docTopic}
           onTopicChange={setDocTopic}
         />
+        <LegalActs />
         <Recommendations />
         <Authorities />
         <Meetings />

@@ -10,6 +10,7 @@ export const NAV_LINKS = [
   { id: 'members', label: 'Состав' },
   { id: 'groups', label: 'Рабочие группы' },
   { id: 'documents', label: 'Документы' },
+  { id: 'legal', label: 'НПА' },
   { id: 'recommendations', label: 'Рекомендации НКО' },
   { id: 'authorities', label: 'Органы власти' },
   { id: 'meetings', label: 'Заседания' },

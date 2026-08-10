@@ -29,6 +29,10 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
 
   const pickTag = (tag: string) => {
     setValue('');
+    if (tag === 'Нормативно-правовые акты') {
+      scrollToSection('legal');
+      return;
+    }
     onTopic(TAG_TOPICS[tag] ?? tag);
     scrollToSection('documents');
   };
