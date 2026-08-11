@@ -41,7 +41,15 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
     <section className="bg-background pb-16 pt-14 sm:pt-20">
       <div className="section-shell grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-16">
         <div>
-          <p className="eyebrow mb-6">Российское общество психиатров</p>
+          <a
+            href="https://psychiatr.ru/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="eyebrow mb-6 inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+          >
+            Российское общество психиатров
+            <Icon name="ArrowUpRight" size={14} />
+          </a>
 
           <h1 className="max-w-[16ch] text-hero text-foreground">
             Совет НКО в&nbsp;сфере охраны психического здоровья
