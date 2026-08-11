@@ -20,16 +20,16 @@ export const PARTNER_LINKS: PartnerLink[] = [
     url: 'https://mental-health-russia.ru/',
     logo: '/partners/sopz-white.png',
     logoColor: '/partners/sopz-hover.png',
-    ratio: 'h-14 w-auto',
-    headerRatio: 'h-9 w-auto',
+    ratio: 'h-[4.5rem] w-auto',
+    headerRatio: 'h-11 w-auto',
   },
   {
     name: 'Российское общество психиатров',
     url: 'https://psychiatr.ru/',
     logo: '/partners/rop-white.png',
     logoColor: '/partners/rop-hover.png',
-    ratio: 'h-8 w-auto',
-    headerRatio: 'h-6 w-auto',
+    ratio: 'h-10 w-auto',
+    headerRatio: 'h-7 w-auto',
   },
 ];
 

@@ -31,7 +31,7 @@ const Footer = () => (
               target="_blank"
               rel="noopener noreferrer"
               title={partner.name}
-              className="group relative flex h-[68px] items-center px-1"
+              className="group relative flex h-[80px] items-center px-1"
             >
               <img
                 src={partner.logo}
