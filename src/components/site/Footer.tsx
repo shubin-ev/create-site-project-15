@@ -5,6 +5,7 @@ import {
   CONTACT_PHONE_HREF,
   LOGO_URL,
   NAV_LINKS,
+  PARTNER_LINKS,
 } from '@/data/council';
 
 const Footer = () => (
@@ -59,6 +60,30 @@ const Footer = () => (
             </a>
           </li>
         </ul>
+      </div>
+    </div>
+
+    <div className="border-t border-header-foreground/15">
+      <div className="section-shell flex flex-wrap items-center gap-x-8 gap-y-4 py-7">
+        <span className="text-[0.85em] text-header-foreground/60">
+          При поддержке
+        </span>
+        {PARTNER_LINKS.map((partner) => (
+          <a
+            key={partner.url}
+            href={partner.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={partner.name}
+            className="flex items-center rounded-lg bg-white px-3 py-2 transition-opacity hover:opacity-85"
+          >
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className={`${partner.ratio} object-contain`}
+            />
+          </a>
+        ))}
       </div>
     </div>
 

@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
-import { CONTACT_EMAIL, LOGO_URL, NAV_LINKS, NavLinkItem } from '@/data/council';
+import {
+  CONTACT_EMAIL,
+  LOGO_URL,
+  NAV_LINKS,
+  NavLinkItem,
+  PARTNER_LINKS,
+} from '@/data/council';
 import { scrollToSection } from '@/lib/scroll';
 
 const Header = () => {
@@ -25,6 +31,30 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-header text-header-foreground">
+      <div className="border-b border-header-foreground/15 bg-background">
+        <div className="section-shell flex items-center justify-end gap-6 py-2 sm:gap-10">
+          <span className="mr-auto hidden text-[0.78em] text-muted-foreground sm:block">
+            Совет создан при поддержке
+          </span>
+          {PARTNER_LINKS.map((partner) => (
+            <a
+              key={partner.url}
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={partner.name}
+              className="flex items-center opacity-90 transition-opacity hover:opacity-100"
+            >
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className={`${partner.ratio} object-contain`}
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+
       <div className="section-shell flex h-[76px] items-center gap-8">
         <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-3.5 text-left">
           <img src={LOGO_URL} alt="" className="h-10 w-11 flex-none object-contain" />

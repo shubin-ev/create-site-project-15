@@ -5,6 +5,28 @@ export const CONTACT_PHONE = '+7 (495) 640-16-37';
 export const CONTACT_PHONE_HREF = '+74956401637';
 export const SOURCE_SITE = 'https://mental-health-russia.ru';
 
+export type PartnerLink = {
+  name: string;
+  url: string;
+  logo: string;
+  ratio: string;
+};
+
+export const PARTNER_LINKS: PartnerLink[] = [
+  {
+    name: 'Союз охраны психического здоровья',
+    url: 'https://mental-health-russia.ru/',
+    logo: '/partners/sopz.png',
+    ratio: 'h-14 w-auto',
+  },
+  {
+    name: 'Российское общество психиатров',
+    url: 'https://psychiatr.ru/',
+    logo: '/partners/rop.png',
+    ratio: 'h-10 w-auto',
+  },
+];
+
 export type NavLinkItem = {
   path: string;
   label: string;
