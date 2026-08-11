@@ -15,6 +15,10 @@ const SOURCE_FILES = [
     label: 'Общественный контроль',
     url: 'https://mental-health-russia.ru/wp-content/uploads/2022/02/4.-NPA-RFsostavlyayuschie-pravovuyu-osnovu-Obschestvennogo-kontrolya-1.docx',
   },
+  {
+    label: 'Основные положения об общественном контроле',
+    url: 'https://mental-health-russia.ru/wp-content/uploads/2022/02/1.-Osnovnye-polozheniya-ob-Obschestvennom-kontrole-v-RF.docx',
+  },
 ];
 
 const plural = (n: number) => {

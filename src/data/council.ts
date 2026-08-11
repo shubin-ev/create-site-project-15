@@ -25,7 +25,7 @@ export const STATS = [
   { value: '114', label: 'члена Совета' },
   { value: '84', label: 'региона РФ' },
   { value: '3', label: 'рабочие группы' },
-  { value: '287', label: 'документа в каталогах' },
+  { value: '229', label: 'документов в каталогах' },
 ];
 
 export const ABOUT_TABS = [
@@ -158,7 +158,6 @@ export const DOC_TYPES = [
 export const DOC_TOPICS = [
   'Все темы',
   'Волонтёрство в психиатрии',
-  'Общественный контроль в психиатрии',
   'Материалы регионов',
 ];
 
@@ -375,14 +374,6 @@ export const DOCUMENTS: DocItem[] = [
     year: '2021',
     format: 'PDF',
     url: `${UP}/2021/12/Metodichka_dlya-volonterov-BOO-Perspektivy.pdf`,
-  },
-  {
-    title: 'Основные положения об Общественном контроле в РФ',
-    type: 'Методические материалы',
-    topic: 'Общественный контроль в психиатрии',
-    year: '2022',
-    format: 'DOCX',
-    url: `${UP}/2022/02/1.-Osnovnye-polozheniya-ob-Obschestvennom-kontrole-v-RF.docx`,
   },
   {
     title: 'Комфортное взаимодействие',
@@ -1431,12 +1422,6 @@ export const MATERIALS = [
     title: 'Волонтёрство в психиатрии',
     text: 'Методические рекомендации, пособия для волонтёров и наставников, формы договоров и соглашений с добровольцами.',
     topic: 'Волонтёрство в психиатрии',
-  },
-  {
-    icon: 'ShieldCheck',
-    title: 'Общественный контроль в психиатрии',
-    text: 'Основные положения, субъекты контроля, формы и порядок его осуществления.',
-    topic: 'Общественный контроль в психиатрии',
   },
   {
     icon: 'BookOpen',
