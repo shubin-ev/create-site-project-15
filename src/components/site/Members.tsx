@@ -64,16 +64,8 @@ const Members = () => {
     <section id="members" className="scroll-mt-24 border-t border-border py-16 sm:py-20">
       <div className="section-shell">
         <p className="eyebrow mb-6">Состав Совета</p>
-        <h2 className="max-w-[24ch] text-[1.9em] leading-tight">
-          {MEMBERS.length} представителей НКО из&nbsp;{REGIONS.length}&nbsp;регионов России
-        </h2>
-        <p className="mt-4 max-w-[60ch] text-muted-foreground">
-          Председатель Совета, организационный комитет и&nbsp;члены Совета — руководители
-          некоммерческих организаций. Данные приведены по&nbsp;состоянию на&nbsp;6&nbsp;августа
-          2026&nbsp;года.
-        </p>
 
-        <div className="mt-8 grid gap-3 lg:grid-cols-[minmax(0,1fr)_280px]">
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_280px]">
           <label className="relative block">
             <span className="sr-only">Поиск по фамилии и организации</span>
             <Icon
