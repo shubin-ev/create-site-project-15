@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-header text-header-foreground">
-      <div className="section-shell flex h-[84px] items-center gap-7">
+      <div className="section-shell flex h-[84px] items-center gap-5">
         <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-3.5 text-left">
           <img src={LOGO_URL} alt="" className="h-10 w-11 flex-none object-contain" />
           <span className="w-[9.5rem] font-heading text-[0.85em] font-medium leading-tight">
@@ -39,7 +39,7 @@ const Header = () => {
           </span>
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-5 lg:flex">
+        <nav className="ml-auto hidden items-center gap-4 lg:flex">
           {NAV_LINKS.map((link) => (
             <div
               key={link.path}
@@ -92,7 +92,7 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="ml-6 hidden flex-none items-center gap-2 lg:flex">
+        <div className="ml-5 hidden flex-none items-center gap-4 lg:flex">
           {PARTNER_LINKS.map((partner) => (
             <a
               key={partner.url}
@@ -100,12 +100,18 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               title={partner.name}
-              className="flex h-[52px] items-center rounded-lg bg-background px-2.5 transition-colors hover:bg-white"
+              className="group relative flex h-[52px] items-center px-1"
             >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className={`${partner.headerRatio} object-contain flex-none`}
+                className={`${partner.headerRatio} object-contain flex-none opacity-80 transition-opacity duration-300 group-hover:opacity-0`}
+              />
+              <img
+                src={partner.logoColor}
+                alt=""
+                aria-hidden
+                className={`${partner.headerRatio} absolute left-1 top-1/2 -translate-y-1/2 object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
               />
             </a>
           ))}

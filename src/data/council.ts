@@ -9,6 +9,7 @@ export type PartnerLink = {
   name: string;
   url: string;
   logo: string;
+  logoColor: string;
   ratio: string;
   headerRatio: string;
 };
@@ -17,16 +18,18 @@ export const PARTNER_LINKS: PartnerLink[] = [
   {
     name: 'Союз охраны психического здоровья',
     url: 'https://mental-health-russia.ru/',
-    logo: '/partners/sopz-color.png',
+    logo: '/partners/sopz-white.png',
+    logoColor: '/partners/sopz-hover.png',
     ratio: 'h-14 w-auto',
-    headerRatio: 'h-10 w-auto',
+    headerRatio: 'h-9 w-auto',
   },
   {
     name: 'Российское общество психиатров',
     url: 'https://psychiatr.ru/',
-    logo: '/partners/rop-color.png',
+    logo: '/partners/rop-white.png',
+    logoColor: '/partners/rop-hover.png',
     ratio: 'h-8 w-auto',
-    headerRatio: 'h-7 w-auto',
+    headerRatio: 'h-6 w-auto',
   },
 ];
 

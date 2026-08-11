@@ -31,12 +31,18 @@ const Footer = () => (
               target="_blank"
               rel="noopener noreferrer"
               title={partner.name}
-              className="flex h-[68px] items-center rounded-lg bg-background px-3.5 transition-colors hover:bg-white"
+              className="group relative flex h-[68px] items-center px-1"
             >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className={`${partner.ratio} object-contain flex-none`}
+                className={`${partner.ratio} object-contain flex-none opacity-80 transition-opacity duration-300 group-hover:opacity-0`}
+              />
+              <img
+                src={partner.logoColor}
+                alt=""
+                aria-hidden
+                className={`${partner.ratio} absolute left-1 top-1/2 -translate-y-1/2 object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
               />
             </a>
           ))}
