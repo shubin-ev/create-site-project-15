@@ -31,37 +31,37 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-header text-header-foreground">
-      <div className="border-b border-header-foreground/15 bg-background">
-        <div className="section-shell flex items-center justify-end gap-6 py-2 sm:gap-10">
-          <span className="mr-auto hidden text-[0.78em] text-muted-foreground sm:block">
-            Совет создан при поддержке
-          </span>
-          {PARTNER_LINKS.map((partner) => (
-            <a
-              key={partner.url}
-              href={partner.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={partner.name}
-              className="flex items-center opacity-90 transition-opacity hover:opacity-100"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className={`${partner.ratio} object-contain`}
-              />
-            </a>
-          ))}
+      <div className="section-shell flex min-h-[104px] items-center gap-8 py-3">
+        <div className="flex flex-col gap-2.5">
+          <Link
+            to="/"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-3.5 text-left"
+          >
+            <img src={LOGO_URL} alt="" className="h-10 w-11 flex-none object-contain" />
+            <span className="w-[9.5rem] font-heading text-[0.85em] font-medium leading-tight">
+              Совет НКО при&nbsp;РОП
+            </span>
+          </Link>
+          <div className="flex items-center gap-3">
+            {PARTNER_LINKS.map((partner) => (
+              <a
+                key={partner.url}
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={partner.name}
+                className="flex items-center rounded-md bg-white px-2 py-1 transition-opacity hover:opacity-85"
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className={`${partner.headerRatio} object-contain`}
+                />
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div className="section-shell flex h-[76px] items-center gap-8">
-        <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-3.5 text-left">
-          <img src={LOGO_URL} alt="" className="h-10 w-11 flex-none object-contain" />
-          <span className="w-[9.5rem] font-heading text-[0.85em] font-medium leading-tight">
-            Совет НКО при&nbsp;РОП
-          </span>
-        </Link>
 
         <nav className="ml-auto hidden items-center gap-5 lg:flex">
           {NAV_LINKS.map((link) => (
