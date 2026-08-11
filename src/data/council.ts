@@ -17,15 +17,15 @@ export const PARTNER_LINKS: PartnerLink[] = [
   {
     name: 'Союз охраны психического здоровья',
     url: 'https://mental-health-russia.ru/',
-    logo: '/partners/sopz.png',
-    ratio: 'h-14 w-auto',
-    headerRatio: 'h-8 w-auto',
+    logo: '/partners/sopz-white.png',
+    ratio: 'h-12 w-auto',
+    headerRatio: 'h-9 w-auto',
   },
   {
     name: 'Российское общество психиатров',
     url: 'https://psychiatr.ru/',
-    logo: '/partners/rop.png',
-    ratio: 'h-10 w-auto',
+    logo: '/partners/rop-white.png',
+    ratio: 'h-8 w-auto',
     headerRatio: 'h-6 w-auto',
   },
 ];

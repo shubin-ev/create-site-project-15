@@ -23,7 +23,7 @@ const Footer = () => (
           заседания и материалы Совета.
         </p>
         <p className="mt-6 text-[0.82em] text-header-foreground/55">При поддержке</p>
-        <div className="mt-3 flex flex-wrap items-center gap-3">
+        <div className="mt-3 flex flex-wrap items-center gap-6">
           {PARTNER_LINKS.map((partner) => (
             <a
               key={partner.url}
@@ -31,7 +31,7 @@ const Footer = () => (
               target="_blank"
               rel="noopener noreferrer"
               title={partner.name}
-              className="flex items-center rounded-lg bg-white px-3 py-2 transition-opacity hover:opacity-85"
+              className="flex items-center opacity-75 transition-opacity hover:opacity-100"
             >
               <img
                 src={partner.logo}

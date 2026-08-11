@@ -43,7 +43,7 @@ const Header = () => {
               Совет НКО при&nbsp;РОП
             </span>
           </Link>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-5">
             {PARTNER_LINKS.map((partner) => (
               <a
                 key={partner.url}
@@ -51,7 +51,7 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={partner.name}
-                className="flex items-center rounded-md bg-white px-2 py-1 transition-opacity hover:opacity-85"
+                className="flex items-center opacity-75 transition-opacity hover:opacity-100"
               >
                 <img
                   src={partner.logo}
