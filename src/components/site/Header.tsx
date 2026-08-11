@@ -31,37 +31,13 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-header text-header-foreground">
-      <div className="section-shell flex min-h-[104px] items-center gap-8 py-3">
-        <div className="flex flex-col gap-2.5">
-          <Link
-            to="/"
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-3.5 text-left"
-          >
-            <img src={LOGO_URL} alt="" className="h-10 w-11 flex-none object-contain" />
-            <span className="w-[9.5rem] font-heading text-[0.85em] font-medium leading-tight">
-              Совет НКО при&nbsp;РОП
-            </span>
-          </Link>
-          <div className="flex items-center gap-5">
-            {PARTNER_LINKS.map((partner) => (
-              <a
-                key={partner.url}
-                href={partner.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={partner.name}
-                className="flex items-center opacity-75 transition-opacity hover:opacity-100"
-              >
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className={`${partner.headerRatio} object-contain`}
-                />
-              </a>
-            ))}
-          </div>
-        </div>
+      <div className="section-shell flex h-[84px] items-center gap-7">
+        <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-3.5 text-left">
+          <img src={LOGO_URL} alt="" className="h-10 w-11 flex-none object-contain" />
+          <span className="w-[9.5rem] font-heading text-[0.85em] font-medium leading-tight">
+            Совет НКО при&nbsp;РОП
+          </span>
+        </Link>
 
         <nav className="ml-auto hidden items-center gap-5 lg:flex">
           {NAV_LINKS.map((link) => (
@@ -114,13 +90,26 @@ const Header = () => {
               )}
             </div>
           ))}
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="hidden min-h-[44px] items-center whitespace-nowrap rounded-lg border border-header-foreground/45 px-4 text-[0.85em] transition-colors hover:border-teal hover:text-teal xl:inline-flex"
-          >
-            {CONTACT_EMAIL}
-          </a>
         </nav>
+
+        <div className="ml-6 hidden flex-none items-center gap-2 lg:flex">
+          {PARTNER_LINKS.map((partner) => (
+            <a
+              key={partner.url}
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={partner.name}
+              className="flex h-[52px] items-center rounded-lg bg-white/95 px-2.5 transition-colors hover:bg-white"
+            >
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className={`${partner.headerRatio} object-contain flex-none`}
+              />
+            </a>
+          ))}
+        </div>
 
         <button
           type="button"
@@ -194,6 +183,24 @@ const Header = () => {
             >
               {CONTACT_EMAIL}
             </a>
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              {PARTNER_LINKS.map((partner) => (
+                <a
+                  key={partner.url}
+                  href={partner.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={partner.name}
+                  className="flex h-[56px] items-center rounded-lg bg-white/95 px-3"
+                >
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className={`${partner.headerRatio} object-contain flex-none`}
+                  />
+                </a>
+              ))}
+            </div>
           </nav>
         </div>
       )}

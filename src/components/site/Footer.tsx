@@ -31,12 +31,12 @@ const Footer = () => (
               target="_blank"
               rel="noopener noreferrer"
               title={partner.name}
-              className="flex items-center opacity-75 transition-opacity hover:opacity-100"
+              className="flex h-[68px] items-center rounded-lg bg-white/95 px-3.5 transition-colors hover:bg-white"
             >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className={`${partner.ratio} object-contain`}
+                className={`${partner.ratio} object-contain flex-none`}
               />
             </a>
           ))}
