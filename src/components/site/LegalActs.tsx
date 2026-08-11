@@ -38,7 +38,12 @@ const LegalActs = () => {
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
     return LEGAL_ACTS.filter((a) => {
-      if (sphere !== LEGAL_SPHERES[0] && a.sphere !== sphere) return false;
+      if (
+        sphere !== LEGAL_SPHERES[0] &&
+        a.sphere !== sphere &&
+        !(a.alsoSpheres ?? []).includes(sphere)
+      )
+        return false;
       if (level !== LEGAL_LEVELS[0] && a.level !== level) return false;
       if (onlyValid && a.status) return false;
       if (q && !`${a.title} ${a.note} ${a.number}`.toLowerCase().includes(q)) return false;
@@ -87,7 +92,9 @@ const LegalActs = () => {
             )}
             {a.year && <span className="text-muted-foreground">{a.year}</span>}
             {a.number && <span className="text-muted-foreground">№ {a.number}</span>}
-            <span className="text-muted-foreground">· {a.sphere}</span>
+            <span className="text-muted-foreground">
+              · {[a.sphere, ...(a.alsoSpheres ?? [])].join(', ')}
+            </span>
           </div>
 
           <h4

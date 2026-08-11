@@ -7,6 +7,7 @@ export type LegalAct = {
   year: string;
   note: string;
   url: string;
+  alsoSpheres?: string[];
   status?: string;
   replacedBy?: string;
 };
@@ -25,6 +26,7 @@ export const LEGAL_ACTS: LegalAct[] = [
     year: '',
     note: '',
     url: 'http://www.kremlin.ru/acts/constitution',
+    alsoSpheres: ['Инклюзивное образование', 'Общественный контроль'],
   },
   {
     sphere: 'Волонтёрство',
@@ -35,6 +37,7 @@ export const LEGAL_ACTS: LegalAct[] = [
     year: '',
     note: '',
     url: 'http://www.kremlin.ru/acts/bank/7279',
+    alsoSpheres: ['Общественный контроль'],
   },
   {
     sphere: 'Волонтёрство',
@@ -75,6 +78,7 @@ export const LEGAL_ACTS: LegalAct[] = [
     year: '2011',
     note: '',
     url: 'http://www.kremlin.ru/acts/bank/34333',
+    alsoSpheres: ['Общественный контроль'],
   },
   {
     sphere: 'Волонтёрство',
@@ -257,16 +261,6 @@ export const LEGAL_ACTS: LegalAct[] = [
     year: '2021',
     note: 'Стандарт является расширенным и дополненным продолжением Стратегии поддержки добровольческой деятельности',
     url: 'https://drive.google.com/file/d/1qsSyXiJmUrQpKrFxtwcEtZfEMK2faNnO/view',
-  },
-  {
-    sphere: 'Инклюзивное образование',
-    level: 'Законы',
-    kind: 'Конституция',
-    title: 'Конституция Российской Федерации',
-    number: '',
-    year: '',
-    note: '',
-    url: 'http://www.kremlin.ru/acts/constitution',
   },
   {
     sphere: 'Инклюзивное образование',
@@ -898,16 +892,6 @@ export const LEGAL_ACTS: LegalAct[] = [
     sphere: 'Общественный контроль',
     level: 'Законы',
     kind: 'Кодекс',
-    title: 'Гражданский кодекс Российской Федерации',
-    number: '',
-    year: '',
-    note: '',
-    url: 'http://www.kremlin.ru/acts/bank/7279',
-  },
-  {
-    sphere: 'Общественный контроль',
-    level: 'Законы',
-    kind: 'Кодекс',
     title: 'Гражданский процессуальный кодекс Российской Федерации',
     number: '',
     year: '',
@@ -1018,16 +1002,6 @@ export const LEGAL_ACTS: LegalAct[] = [
     sphere: 'Общественный контроль',
     level: 'Законы',
     kind: 'Федеральный закон',
-    title: 'Федеральный закон от 21 ноября 2011 г. № 323-ФЗ «Об основах охраны здоровья граждан в Российской Федерации»',
-    number: '323-ФЗ',
-    year: '2011',
-    note: '',
-    url: 'http://www.kremlin.ru/acts/bank/34333',
-  },
-  {
-    sphere: 'Общественный контроль',
-    level: 'Законы',
-    kind: 'Федеральный закон',
     title: 'Федеральный закон от 21 июля 2014 г. № 212-ФЗ «Об основах общественного контроля в Российской Федерации»',
     number: '212-ФЗ',
     year: '2014',
@@ -1053,16 +1027,6 @@ export const LEGAL_ACTS: LegalAct[] = [
     year: '2020',
     note: '',
     url: 'https://sudact.ru/law/rasporiazhenie-pravitelstva-rf-ot-23122020-n-3512-r/',
-  },
-  {
-    sphere: 'Общественный контроль',
-    level: 'Ведомственные акты',
-    kind: 'Иной акт',
-    title: 'составляющих правовую основу общественного контроля Конституция Российской Федерации',
-    number: '',
-    year: '',
-    note: '',
-    url: 'http://www.kremlin.ru/acts/constitution',
   },
   {
     sphere: 'Общественный контроль',

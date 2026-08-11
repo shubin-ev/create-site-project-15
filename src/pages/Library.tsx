@@ -4,7 +4,7 @@ import Documents from "@/components/site/Documents";
 import InclusiveEducation from "@/components/site/InclusiveEducation";
 import Recommendations from "@/components/site/Recommendations";
 import Volunteers from "@/components/site/Volunteers";
-import { METHODICAL_GROUPS } from "@/data/recommendations";
+import { METHODICAL_GROUPS, VOLUNTEER_GROUPS } from "@/data/recommendations";
 import { usePageMeta } from "@/hooks/use-page-meta";
 
 const LibraryPage = () => {
@@ -25,6 +25,14 @@ const LibraryPage = () => {
         onTopicChange={setTopic}
       />
       <Volunteers />
+      <Recommendations
+        id="volunteering"
+        eyebrow="Волонтёрство"
+        title="Методические материалы по добровольчеству"
+        description="Методики и рекомендации по привлечению волонтёров, оформлению отношений с добровольцами и организации волонтёрской работы в учреждениях и НКО."
+        groups={VOLUNTEER_GROUPS}
+        buttonLabel="материалов"
+      />
       <InclusiveEducation />
       <Recommendations
         id="recommendations"
@@ -38,7 +46,7 @@ const LibraryPage = () => {
         id="methodical"
         eyebrow="Методические материалы"
         title="Методички, сборники и обзоры регионов"
-        description="Методические рекомендации, аналитические обзоры и обучающие материалы региональных ресурсных центров. Разделены по темам: регистрация, отчётность, финансы, добровольчество, продвижение и управление."
+        description="Методические рекомендации, аналитические обзоры и обучающие материалы региональных ресурсных центров. Разделены по темам: регистрация, отчётность, финансы, продвижение и управление."
         groups={METHODICAL_GROUPS}
         buttonLabel="материалов"
       />
