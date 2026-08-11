@@ -1,18 +1,44 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { ABOUT_TABS, COUNCIL_DOCS, QUOTES } from '@/data/council';
+import { useNextMeeting } from '@/hooks/use-next-meeting';
+import { scrollToSection } from '@/lib/scroll';
 
 const About = () => {
   const [active, setActive] = useState(ABOUT_TABS[0].id);
   const tab = ABOUT_TABS.find((t) => t.id === active) ?? ABOUT_TABS[0];
+  const next = useNextMeeting();
 
   return (
     <section id="about" className="scroll-mt-24 bg-surface py-14 sm:py-16">
       <div className="section-shell">
         <p className="eyebrow mb-5">О Совете</p>
-        <h1 className="mb-10 max-w-[20ch] text-[2.1em] font-medium leading-[1.15] tracking-tight">
-          Совет НКО в&nbsp;сфере охраны психического здоровья
-        </h1>
+
+        <div className="mb-10 flex flex-wrap items-start justify-between gap-6">
+          <h1 className="max-w-[20ch] text-[2.1em] font-medium leading-[1.15] tracking-tight">
+            Совет НКО в&nbsp;сфере охраны психического здоровья
+          </h1>
+
+          <button
+            type="button"
+            onClick={() => scrollToSection('meetings')}
+            className="group flex w-full max-w-[260px] flex-col rounded-lg border border-border border-l-[3px] border-l-teal bg-background p-5 text-left transition-colors hover:border-primary hover:border-l-teal"
+          >
+            <span className="flex items-center gap-2 text-[0.78em] uppercase tracking-[0.04em] text-muted-foreground">
+              <Icon name="CalendarDays" size={15} className="text-teal" />
+              Следующее заседание
+            </span>
+            <span className="mt-2 font-heading text-[1.25em] leading-snug">{next.date}</span>
+            <span className="mt-3 flex items-center gap-1.5 text-[0.85em] text-primary">
+              Все заседания
+              <Icon
+                name="ArrowRight"
+                size={15}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
+            </span>
+          </button>
+        </div>
 
         <div
           role="tablist"
