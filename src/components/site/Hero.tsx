@@ -10,11 +10,6 @@ type HeroProps = {
   onTopic: (topic: string) => void;
 };
 
-const TAG_TOPICS: Record<string, string> = {
-  'Волонтёрство в психиатрии': 'Волонтёрство в психиатрии',
-  'Инклюзивное образование': 'Инклюзивное образование',
-};
-
 const Hero = ({ onSearch, onTopic }: HeroProps) => {
   const [value, setValue] = useState('');
   const next = useNextMeeting();
@@ -35,7 +30,11 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
       navigate('/library#inclusive-education');
       return;
     }
-    onTopic(TAG_TOPICS[tag] ?? tag);
+    if (tag === 'Волонтёрство в психиатрии') {
+      navigate('/volunteering');
+      return;
+    }
+    onTopic(tag);
   };
 
   return (

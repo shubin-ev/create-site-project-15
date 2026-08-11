@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { LEGAL_ACTS, LEGAL_LEVELS, LEGAL_SPHERES, LegalAct } from '@/data/legal-acts';
 
@@ -32,7 +33,11 @@ const plural = (n: number) => {
 const PAGE = 12;
 
 const LegalActs = () => {
-  const [sphere, setSphere] = useState(LEGAL_SPHERES[0]);
+  const [params] = useSearchParams();
+  const initial = params.get('sphere');
+  const [sphere, setSphere] = useState(
+    initial && LEGAL_SPHERES.includes(initial) ? initial : LEGAL_SPHERES[0],
+  );
   const [level, setLevel] = useState(LEGAL_LEVELS[0]);
   const [query, setQuery] = useState('');
   const [onlyValid, setOnlyValid] = useState(false);

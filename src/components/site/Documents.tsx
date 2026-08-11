@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import Icon from '@/components/ui/icon';
-import { DOCUMENTS, MATERIALS } from '@/data/council';
+import { DOCUMENTS, MATERIALS, VOLUNTEER_TOPIC } from '@/data/council';
+
+const LIBRARY_DOCS = DOCUMENTS.filter((d) => d.topic !== VOLUNTEER_TOPIC);
 
 type DocumentsProps = {
   query: string;
@@ -20,7 +22,7 @@ const plural = (n: number) => {
 const Documents = ({ query, onQueryChange, topic, onTopicChange }: DocumentsProps) => {
   const counts = useMemo(() => {
     const map: Record<string, number> = {};
-    DOCUMENTS.forEach((d) => {
+    LIBRARY_DOCS.forEach((d) => {
       map[d.topic] = (map[d.topic] ?? 0) + 1;
     });
     return map;
@@ -29,20 +31,20 @@ const Documents = ({ query, onQueryChange, topic, onTopicChange }: DocumentsProp
   const found = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return null;
-    return DOCUMENTS.filter((d) =>
+    return LIBRARY_DOCS.filter((d) =>
       `${d.title} ${d.org ?? ''} ${d.topic}`.toLowerCase().includes(q),
     );
   }, [query]);
 
   const inTopic = useMemo(
-    () => (topic ? DOCUMENTS.filter((d) => d.topic === topic) : []),
+    () => (topic ? LIBRARY_DOCS.filter((d) => d.topic === topic) : []),
     [topic],
   );
 
   const list = found ?? inTopic;
   const current = MATERIALS.find((m) => m.topic === topic);
 
-  const item = (d: (typeof DOCUMENTS)[number]) => (
+  const item = (d: (typeof LIBRARY_DOCS)[number]) => (
     <li key={`${d.url}-${d.topic}`}>
       <article className="flex gap-4 rounded-lg border border-border bg-background p-5 transition-colors hover:border-primary">
         <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-secondary text-primary">

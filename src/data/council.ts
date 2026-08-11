@@ -8,6 +8,7 @@ export const SOURCE_SITE = 'https://mental-health-russia.ru';
 export const NAV_LINKS = [
   { path: '/about', label: 'О Совете' },
   { path: '/meetings', label: 'Заседания' },
+  { path: '/volunteering', label: 'Волонтёрство' },
   { path: '/legal', label: 'Правовая база' },
   { path: '/library', label: 'Библиотека НКО' },
   { path: '/authorities', label: 'Органы власти' },
@@ -155,11 +156,7 @@ export const DOC_TYPES = [
   'Формы документов',
 ];
 
-export const DOC_TOPICS = [
-  'Все темы',
-  'Волонтёрство в психиатрии',
-  'Материалы регионов',
-];
+export const DOC_TOPICS = ['Все темы', 'Материалы регионов'];
 
 export const DOC_YEARS = ['Все годы', '2026', '2023', '2022', '2021'];
 
@@ -1408,13 +1405,9 @@ export const MEMBERS: Member[] = [
   },
 ];
 
+export const VOLUNTEER_TOPIC = 'Волонтёрство в психиатрии';
+
 export const MATERIALS = [
-  {
-    icon: 'HeartHandshake',
-    title: 'Волонтёрство в психиатрии',
-    text: 'Методические рекомендации, пособия для волонтёров и наставников, формы договоров и соглашений с добровольцами.',
-    topic: 'Волонтёрство в психиатрии',
-  },
   {
     icon: 'BookOpen',
     title: 'Материалы регионов',

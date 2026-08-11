@@ -10,6 +10,7 @@ import AboutPage from './pages/About';
 import MeetingsPage from './pages/Meetings';
 import LegalPage from './pages/Legal';
 import LibraryPage from './pages/Library';
+import VolunteeringPage from './pages/Volunteering';
 import AuthoritiesPage from './pages/Authorities';
 import ContactsPage from './pages/Contacts';
 import NotFound from './pages/NotFound';
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/meetings" element={<MeetingsPage />} />
             <Route path="/legal" element={<LegalPage />} />
             <Route path="/library" element={<LibraryPage />} />
+            <Route path="/volunteering" element={<VolunteeringPage />} />
             <Route path="/authorities" element={<AuthoritiesPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/members" element={<Navigate to="/about" replace />} />
@@ -38,6 +40,7 @@ const App = () => (
             <Route path="/documents" element={<Navigate to="/library" replace />} />
             <Route path="/recommendations" element={<Navigate to="/library" replace />} />
             <Route path="/control" element={<Navigate to="/legal" replace />} />
+            <Route path="/volunteers" element={<Navigate to="/volunteering" replace />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

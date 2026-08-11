@@ -3,14 +3,13 @@ import { useSearchParams } from "react-router-dom";
 import Documents from "@/components/site/Documents";
 import InclusiveEducation from "@/components/site/InclusiveEducation";
 import Recommendations from "@/components/site/Recommendations";
-import Volunteers from "@/components/site/Volunteers";
-import { METHODICAL_GROUPS, VOLUNTEER_GROUPS } from "@/data/recommendations";
+import { METHODICAL_GROUPS } from "@/data/recommendations";
 import { usePageMeta } from "@/hooks/use-page-meta";
 
 const LibraryPage = () => {
   usePageMeta(
     "Библиотека НКО: документы и методические материалы",
-    "Методические рекомендации, памятки и образцы документов по волонтёрству, инклюзивному образованию и общественному контролю в психиатрии.",
+    "Методические рекомендации, памятки и образцы документов для некоммерческих организаций: регистрация, отчётность, финансы и управление.",
   );
   const [params] = useSearchParams();
   const [query, setQuery] = useState(params.get("q") ?? "");
@@ -23,15 +22,6 @@ const LibraryPage = () => {
         onQueryChange={setQuery}
         topic={topic}
         onTopicChange={setTopic}
-      />
-      <Volunteers />
-      <Recommendations
-        id="volunteering"
-        eyebrow="Волонтёрство"
-        title="Методические материалы по добровольчеству"
-        description="Методики и рекомендации по привлечению волонтёров, оформлению отношений с добровольцами и организации волонтёрской работы в учреждениях и НКО."
-        groups={VOLUNTEER_GROUPS}
-        buttonLabel="материалов"
       />
       <InclusiveEducation />
       <Recommendations
