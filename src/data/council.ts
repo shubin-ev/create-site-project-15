@@ -205,6 +205,22 @@ export const COUNCIL_DOCS: CouncilDoc[] = [
     format: 'PDF',
     url: `${UP}/2024/05/Otchet-o-rabote-Soveta-NKO-pri-ROP-za-2023-g.pdf`,
   },
+  {
+    title: 'Отчёт о работе за 2024 год',
+    hint: 'Четыре заседания, проект «Взаимодействие НКО и врачей психиатров», IX фестиваль «Другие?».',
+    icon: 'FileBarChart',
+    year: '2024',
+    format: 'PDF',
+    url: '/docs/Otchet-Soveta-NKO-pri-ROP-za-2024-g.pdf',
+  },
+  {
+    title: 'Отчёт о работе за 2025 год',
+    hint: 'Четыре заседания, X фестиваль «Другие?», подготовка секции Совета к XVIII Съезду психиатров России.',
+    icon: 'FileBarChart',
+    year: '2025',
+    format: 'PDF',
+    url: '/docs/Otchet-Soveta-NKO-pri-ROP-za-2025-g.pdf',
+  },
 ];
 
 export const DOCUMENTS: DocItem[] = [
