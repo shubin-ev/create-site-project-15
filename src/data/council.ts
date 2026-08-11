@@ -53,9 +53,9 @@ export const NAV_LINKS: NavLinkItem[] = [
     path: '/library',
     label: 'Библиотека НКО',
     items: [
-      { hash: 'documents', label: 'Материалы регионов', hint: 'Практики и пособия НКО из регионов' },
-      { hash: 'recommendations', label: 'Образцы и инструкции', hint: 'Памятки, уставы, протоколы' },
-      { hash: 'methodical', label: 'Методические сборники', hint: 'Регистрация, отчётность, финансы, управление' },
+      { hash: 'practices', label: 'Практики и методики', hint: 'Опыт НКО в работе с психическими особенностями' },
+      { hash: 'how-to', label: 'Как вести НКО', hint: 'Регистрация, отчётность, налоги, гранты' },
+      { hash: 'samples', label: 'Образцы документов', hint: 'Уставы, протоколы, договоры, заявления' },
     ],
   },
   { path: '/authorities', label: 'Органы власти' },
