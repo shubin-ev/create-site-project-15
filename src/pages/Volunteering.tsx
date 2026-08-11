@@ -6,6 +6,35 @@ import Volunteers from '@/components/site/Volunteers';
 import { VOLUNTEER_GROUPS } from '@/data/recommendations';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
+const TRAINING = [
+  {
+    icon: 'GraduationCap',
+    title: 'Школа волонтёров в психиатрии',
+    org: 'Союз специалистов в сфере охраны психического здоровья',
+    text: 'Курс для тех, кто хочет прийти волонтёром в психиатрические учреждения, психоневрологические интернаты и НКО. Ведут врачи-психиатры, психотерапевты и клинические психологи.',
+    points: [
+      'Видеоуроки и вебинары, тестовые задания и обратная связь кураторов',
+      'Правила общения и техника безопасности при работе с людьми с ментальными особенностями',
+      'Методическое пособие и рабочая тетрадь',
+    ],
+    action: 'Записаться на курс',
+    url: 'https://volunteers.mental-health-russia.ru/volunteer-school',
+  },
+  {
+    icon: 'Lightbulb',
+    title: 'Социальный импакт: как проекты меняют мир',
+    org: 'Академия постдипломного образования при поддержке Союза охраны психического здоровья',
+    text: 'Курс по социальному проектированию для тех, у кого есть идея, но нет плана: как найти проблему, собрать команду, привлечь ресурсы и запустить инициативу.',
+    points: [
+      '13 практических модулей — от концепции до реализации, 36 часов видеоуроков',
+      'Паспорт проекта, дорожная карта, поиск спонсоров и партнёров',
+      'Разбор реальных кейсов и приёмы публичной защиты проекта',
+    ],
+    action: 'Начать обучение',
+    url: 'https://rosmededucation.ru/social_impact',
+  },
+];
+
 const VolunteeringPage = () => {
   usePageMeta(
     'Волонтёрство в сфере психического здоровья',
@@ -38,6 +67,64 @@ const VolunteeringPage = () => {
         groups={VOLUNTEER_GROUPS}
         buttonLabel="материалов"
       />
+
+      <section
+        id="volunteer-training"
+        className="scroll-mt-24 border-t border-border py-14 sm:py-16"
+      >
+        <div className="section-shell">
+          <p className="eyebrow mb-5">Бесплатное обучение</p>
+          <h2 className="max-w-[26ch] text-[1.9em] font-medium leading-tight tracking-tight">
+            Онлайн-курсы для волонтёров
+          </h2>
+          <p className="mt-4 max-w-[62ch] text-muted-foreground">
+            Два бесплатных дистанционных курса при поддержке Союза охраны психического
+            здоровья: подготовка волонтёров к&nbsp;работе в&nbsp;психиатрии и&nbsp;обучение
+            социальному проектированию. Записаться может любой желающий.
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {TRAINING.map((c) => (
+              <article
+                key={c.url}
+                className="flex flex-col rounded-lg border border-border bg-surface p-6"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-secondary text-primary">
+                  <Icon name={c.icon} fallback="GraduationCap" size={22} />
+                </span>
+                <h3 className="mt-4 font-heading text-[1.15em] leading-snug">{c.title}</h3>
+                <p className="mt-1.5 text-[0.85em] text-muted-foreground">{c.org}</p>
+                <p className="mt-3 text-[0.92em] leading-[1.55] text-muted-foreground">
+                  {c.text}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {c.points.map((t) => (
+                    <li
+                      key={t}
+                      className="flex gap-3 text-[0.88em] leading-[1.5] text-muted-foreground"
+                    >
+                      <span className="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-teal" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto flex flex-wrap items-center gap-3 pt-6">
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-primary px-5 text-[0.9em] text-primary-foreground transition-opacity hover:opacity-90"
+                  >
+                    {c.action}
+                    <Icon name="ArrowUpRight" size={16} />
+                  </a>
+                  <span className="text-[0.85em] text-teal">Бесплатно</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="border-t border-border py-14 sm:py-16">
         <div className="section-shell">
