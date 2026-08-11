@@ -1,10 +1,27 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
-import { CONTACT_EMAIL, LOGO_URL, NAV_LINKS } from '@/data/council';
+import { CONTACT_EMAIL, LOGO_URL, NAV_LINKS, NavLinkItem } from '@/data/council';
+import { scrollToSection } from '@/lib/scroll';
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const goToSection = (link: NavLinkItem, hash: string) => {
+    setHovered(null);
+    setOpen(false);
+    setExpanded(null);
+    if (pathname === link.path) {
+      scrollToSection(hash);
+      return;
+    }
+    navigate(link.path);
+    window.setTimeout(() => scrollToSection(hash), 140);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-header text-header-foreground">
@@ -18,17 +35,54 @@ const Header = () => {
 
         <nav className="ml-auto hidden items-center gap-5 lg:flex">
           {NAV_LINKS.map((link) => (
-            <NavLink
+            <div
               key={link.path}
-              to={link.path}
-              className={({ isActive }) =>
-                `whitespace-nowrap py-1.5 text-[0.85em] transition-colors hover:text-header-hover ${
-                  isActive ? 'text-teal' : 'text-header-foreground'
-                }`
-              }
+              className="relative"
+              onMouseEnter={() => setHovered(link.path)}
+              onMouseLeave={() => setHovered(null)}
             >
-              {link.label}
-            </NavLink>
+              <NavLink
+                to={link.path}
+                onClick={() => setHovered(null)}
+                className={({ isActive }) =>
+                  `flex items-center gap-1 whitespace-nowrap py-1.5 text-[0.85em] transition-colors hover:text-header-hover ${
+                    isActive ? 'text-teal' : 'text-header-foreground'
+                  }`
+                }
+              >
+                {link.label}
+                {link.items && (
+                  <Icon
+                    name="ChevronDown"
+                    size={14}
+                    className={`transition-transform ${hovered === link.path ? 'rotate-180' : ''}`}
+                  />
+                )}
+              </NavLink>
+
+              {link.items && hovered === link.path && (
+                <div className="absolute left-1/2 top-full z-50 w-[320px] -translate-x-1/2 pt-3">
+                  <ul className="overflow-hidden rounded-lg border border-border bg-background p-1.5 shadow-lg">
+                    {link.items.map((item) => (
+                      <li key={item.hash}>
+                        <button
+                          type="button"
+                          onClick={() => goToSection(link, item.hash)}
+                          className="w-full rounded-md px-3 py-2.5 text-left transition-colors hover:bg-secondary"
+                        >
+                          <span className="block font-heading text-[0.9em] leading-snug text-foreground">
+                            {item.label}
+                          </span>
+                          <span className="mt-0.5 block text-[0.8em] leading-[1.4] text-muted-foreground">
+                            {item.hint}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           ))}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
@@ -53,18 +107,56 @@ const Header = () => {
         <div className="border-t border-header-foreground/15 lg:hidden">
           <nav className="section-shell flex flex-col gap-1 py-4">
             {NAV_LINKS.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `flex min-h-[44px] items-center rounded-lg px-2 text-left text-[0.95em] transition-colors hover:bg-header-foreground/10 ${
-                    isActive ? 'text-teal' : ''
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
+              <div key={link.path}>
+                <div className="flex items-center">
+                  <NavLink
+                    to={link.path}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      `flex min-h-[44px] flex-1 items-center rounded-lg px-2 text-left text-[0.95em] transition-colors hover:bg-header-foreground/10 ${
+                        isActive ? 'text-teal' : ''
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                  {link.items && (
+                    <button
+                      type="button"
+                      aria-label={`Разделы: ${link.label}`}
+                      aria-expanded={expanded === link.path}
+                      onClick={() =>
+                        setExpanded((v) => (v === link.path ? null : link.path))
+                      }
+                      className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-lg"
+                    >
+                      <Icon
+                        name="ChevronDown"
+                        size={18}
+                        className={`transition-transform ${
+                          expanded === link.path ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                  )}
+                </div>
+
+                {link.items && expanded === link.path && (
+                  <ul className="mb-1 ml-2 border-l border-header-foreground/20 pl-3">
+                    {link.items.map((item) => (
+                      <li key={item.hash}>
+                        <button
+                          type="button"
+                          onClick={() => goToSection(link, item.hash)}
+                          className="flex min-h-[42px] w-full items-center rounded-lg px-2 text-left text-[0.88em] text-header-foreground/80 transition-colors hover:bg-header-foreground/10"
+                        >
+                          {item.label}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             ))}
             <a
               href={`mailto:${CONTACT_EMAIL}`}

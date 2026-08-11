@@ -206,7 +206,10 @@ const Volunteers = () => {
         </div>
       </section>
 
-      <section className="border-t border-border bg-surface py-14 sm:py-16">
+      <section
+        id="volunteer-federal"
+        className="scroll-mt-24 border-t border-border bg-surface py-14 sm:py-16"
+      >
         <div className="section-shell">
           <h2 className="max-w-[24ch] text-[1.9em] font-medium leading-tight tracking-tight">
             Федеральная инфраструктура волонтёрства

@@ -43,7 +43,7 @@ const InclusivePage = () => {
 
       <InclusiveEducation />
 
-      <section className="border-t border-border py-14 sm:py-16">
+      <section id="inclusive-file" className="scroll-mt-24 border-t border-border py-14 sm:py-16">
         <div className="section-shell">
           <div className="rounded-lg border border-border bg-surface p-6 sm:p-8">
             <h2 className="font-heading text-[1.2em] leading-tight">

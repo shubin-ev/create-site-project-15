@@ -5,12 +5,59 @@ export const CONTACT_PHONE = '+7 (495) 640-16-37';
 export const CONTACT_PHONE_HREF = '+74956401637';
 export const SOURCE_SITE = 'https://mental-health-russia.ru';
 
-export const NAV_LINKS = [
-  { path: '/about', label: 'О Совете' },
-  { path: '/volunteering', label: 'Волонтёрство' },
-  { path: '/inclusive', label: 'Инклюзия' },
-  { path: '/legal', label: 'Правовая база' },
-  { path: '/library', label: 'Библиотека НКО' },
+export type NavLinkItem = {
+  path: string;
+  label: string;
+  items?: { hash: string; label: string; hint: string }[];
+};
+
+export const NAV_LINKS: NavLinkItem[] = [
+  {
+    path: '/about',
+    label: 'О Совете',
+    items: [
+      { hash: 'about', label: 'О Совете и документы', hint: 'Цель, устройство работы, положение и отчёты' },
+      { hash: 'members', label: 'Состав Совета', hint: '114 представителей НКО из 84 регионов' },
+      { hash: 'groups', label: 'Рабочие группы', hint: 'Три профильные группы и их составы' },
+      { hash: 'meetings', label: 'Заседания', hint: 'График встреч, повестки и протоколы' },
+    ],
+  },
+  {
+    path: '/volunteering',
+    label: 'Волонтёрство',
+    items: [
+      { hash: 'volunteers', label: 'Куда обратиться', hint: 'Организации с волонтёрскими программами' },
+      { hash: 'volunteer-federal', label: 'Федеральная инфраструктура', hint: 'Росмолодёжь, Добро.рф и другие' },
+      { hash: 'volunteer-docs', label: 'Документы и методики', hint: 'Договоры с добровольцами и пособия' },
+      { hash: 'volunteer-training', label: 'Бесплатное обучение', hint: 'Два онлайн-курса с открытой записью' },
+      { hash: 'volunteering-methods', label: 'Методики регионов', hint: 'Рекомендации ресурсных центров' },
+    ],
+  },
+  {
+    path: '/inclusive',
+    label: 'Инклюзия',
+    items: [
+      { hash: 'inclusive-education', label: 'Справка Совета', hint: 'Нормы, финансирование, ФГОС и госпрограммы' },
+      { hash: 'inclusive-file', label: 'Скачать памятку', hint: 'Правовая основа одним файлом, DOCX' },
+    ],
+  },
+  {
+    path: '/legal',
+    label: 'Правовая база',
+    items: [
+      { hash: 'legal', label: 'Нормативные акты', hint: '106 актов со ссылками на официальные тексты' },
+      { hash: 'control', label: 'Общественный контроль', hint: 'Формы контроля и полномочия участников' },
+    ],
+  },
+  {
+    path: '/library',
+    label: 'Библиотека НКО',
+    items: [
+      { hash: 'documents', label: 'Материалы регионов', hint: 'Практики и пособия НКО из регионов' },
+      { hash: 'recommendations', label: 'Образцы и инструкции', hint: 'Памятки, уставы, протоколы' },
+      { hash: 'methodical', label: 'Методические сборники', hint: 'Регистрация, отчётность, финансы, управление' },
+    ],
+  },
   { path: '/authorities', label: 'Органы власти' },
   { path: '/contacts', label: 'Контакты' },
 ];
