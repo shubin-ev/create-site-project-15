@@ -7,8 +7,8 @@ export const SOURCE_SITE = 'https://mental-health-russia.ru';
 
 export const NAV_LINKS = [
   { path: '/about', label: 'О Совете' },
-  { path: '/meetings', label: 'Заседания' },
   { path: '/volunteering', label: 'Волонтёрство' },
+  { path: '/inclusive', label: 'Инклюзия' },
   { path: '/legal', label: 'Правовая база' },
   { path: '/library', label: 'Библиотека НКО' },
   { path: '/authorities', label: 'Органы власти' },

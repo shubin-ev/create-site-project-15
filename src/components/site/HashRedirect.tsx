@@ -7,11 +7,12 @@ const HASH_MAP: Record<string, string> = {
   members: '/about',
   groups: '/about',
   documents: '/library',
+  'inclusive-education': '/inclusive',
   recommendations: '/library',
   legal: '/legal',
   control: '/legal',
   authorities: '/authorities',
-  meetings: '/meetings',
+  meetings: '/about',
   contacts: '/contacts',
 };
 

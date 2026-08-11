@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Documents from "@/components/site/Documents";
-import InclusiveEducation from "@/components/site/InclusiveEducation";
 import Recommendations from "@/components/site/Recommendations";
 import { METHODICAL_GROUPS } from "@/data/recommendations";
 import { usePageMeta } from "@/hooks/use-page-meta";
@@ -23,7 +22,6 @@ const LibraryPage = () => {
         topic={topic}
         onTopicChange={setTopic}
       />
-      <InclusiveEducation />
       <Recommendations
         id="recommendations"
         eyebrow="Рекомендации для НКО"

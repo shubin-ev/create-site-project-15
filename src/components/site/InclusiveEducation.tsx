@@ -153,7 +153,7 @@ const InclusiveEducation = () => {
       className="scroll-mt-24 border-t border-border py-14 sm:py-16"
     >
       <div className="section-shell">
-        <p className="eyebrow mb-5">Инклюзивное образование</p>
+        <p className="eyebrow mb-5">Справка Совета</p>
         <h2 className="max-w-[28ch] text-[1.9em] font-medium leading-tight tracking-tight">
           Об образовании, в&nbsp;том числе инклюзивном, и&nbsp;его финансовом
           обеспечении

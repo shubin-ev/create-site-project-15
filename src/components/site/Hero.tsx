@@ -27,7 +27,7 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
       return;
     }
     if (tag === 'Инклюзивное образование') {
-      navigate('/library#inclusive-education');
+      navigate('/inclusive');
       return;
     }
     if (tag === 'Волонтёрство в психиатрии') {
@@ -126,7 +126,7 @@ const Hero = ({ onSearch, onTopic }: HeroProps) => {
               </button>
               <button
                 type="button"
-                onClick={() => navigate('/meetings')}
+                onClick={() => navigate('/about#meetings')}
                 className="inline-flex min-h-[44px] items-center gap-2 border-b border-primary/35 text-[0.88em] text-primary transition-colors hover:border-primary"
               >
                 График заседаний

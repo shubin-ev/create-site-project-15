@@ -7,10 +7,10 @@ import Layout from '@/components/site/Layout';
 import HashRedirect from '@/components/site/HashRedirect';
 import Index from './pages/Index';
 import AboutPage from './pages/About';
-import MeetingsPage from './pages/Meetings';
 import LegalPage from './pages/Legal';
 import LibraryPage from './pages/Library';
 import VolunteeringPage from './pages/Volunteering';
+import InclusivePage from './pages/Inclusive';
 import AuthoritiesPage from './pages/Authorities';
 import ContactsPage from './pages/Contacts';
 import NotFound from './pages/NotFound';
@@ -28,10 +28,11 @@ const App = () => (
           <Route element={<Layout />}>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/meetings" element={<MeetingsPage />} />
+            <Route path="/meetings" element={<Navigate to="/about#meetings" replace />} />
             <Route path="/legal" element={<LegalPage />} />
             <Route path="/library" element={<LibraryPage />} />
             <Route path="/volunteering" element={<VolunteeringPage />} />
+            <Route path="/inclusive" element={<InclusivePage />} />
             <Route path="/authorities" element={<AuthoritiesPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/members" element={<Navigate to="/about" replace />} />
