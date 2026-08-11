@@ -9,15 +9,8 @@ const WorkGroups = () => {
     <section id="groups" className="scroll-mt-24 border-t border-border bg-surface py-16 sm:py-20">
       <div className="section-shell">
         <p className="eyebrow mb-6">Рабочие группы</p>
-        <h2 className="max-w-[26ch] text-[1.9em] leading-tight">
-          Три рабочие группы Совета НКО при&nbsp;РОП
-        </h2>
-        <p className="mt-4 max-w-[60ch] text-muted-foreground">
-          Между заседаниями Совета работу ведут профильные группы. Ниже — руководители
-          и&nbsp;полный состав каждой группы, редакция от&nbsp;6&nbsp;августа 2026&nbsp;года.
-        </p>
 
-        <div className="mt-8 space-y-4">
+        <div className="space-y-4">
           {WORK_GROUPS.map((g) => {
             const isOpen = open === g.id;
             return (

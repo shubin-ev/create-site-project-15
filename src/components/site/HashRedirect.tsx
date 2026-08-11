@@ -6,7 +6,6 @@ const HASH_MAP: Record<string, string> = {
   about: '/about',
   members: '/about',
   groups: '/about',
-  reports: '/about',
   documents: '/library',
   recommendations: '/library',
   legal: '/legal',
