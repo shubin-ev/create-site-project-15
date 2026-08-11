@@ -100,7 +100,7 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
               title={partner.name}
-              className="flex h-[52px] items-center rounded-lg bg-white/95 px-2.5 transition-colors hover:bg-white"
+              className="flex h-[52px] items-center rounded-lg bg-background px-2.5 transition-colors hover:bg-white"
             >
               <img
                 src={partner.logo}
@@ -191,7 +191,7 @@ const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={partner.name}
-                  className="flex h-[56px] items-center rounded-lg bg-white/95 px-3"
+                  className="flex h-[56px] items-center rounded-lg bg-background px-3"
                 >
                   <img
                     src={partner.logo}
