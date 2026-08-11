@@ -1,53 +1,51 @@
-import { useMemo, useState } from 'react';
-import Icon from '@/components/ui/icon';
-import { LIBRARY_BLOCKS, LIBRARY_ITEMS, LibraryItem } from '@/data/library';
+import { useMemo, useState } from "react";
+import Icon from "@/components/ui/icon";
+import { LIBRARY_BLOCKS, LIBRARY_ITEMS, LibraryItem } from "@/data/library";
 
 const BLOCK_IDS: Record<string, string> = {
-  'Практики и методики': 'practices',
-  'Как вести НКО': 'how-to',
-  'Образцы документов': 'samples',
+  "Практики и методики": "practices",
+  "Как вести НКО": "how-to",
+  "Образцы документов": "samples",
 };
 
 const plural = (n: number) => {
   const mod10 = n % 10;
   const mod100 = n % 100;
-  if (mod10 === 1 && mod100 !== 11) return 'материал';
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return 'материала';
-  return 'материалов';
+  if (mod10 === 1 && mod100 !== 11) return "материал";
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20))
+    return "материала";
+  return "материалов";
 };
 
 const formatIcon = (format: string) =>
-  format === 'DOCX' ? 'FileText' : format === 'XLSX' ? 'Table2' : 'FileType2';
+  format === "DOCX" ? "FileText" : format === "XLSX" ? "Table2" : "FileType2";
 
 const Item = ({ item }: { item: LibraryItem }) => {
-  const meta = [item.org, item.region !== item.org ? item.region : '', item.format]
+  const meta = [
+    item.org,
+    item.region !== item.org ? item.region : "",
+    item.format,
+  ]
     .filter(Boolean)
-    .join(' · ');
+    .join(" · ");
 
   return (
     <li className="border-t border-border py-4 first:border-t-0">
       <div className="flex gap-3.5">
         <span className="mt-0.5 flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-secondary text-primary">
-          <Icon name={item.url ? formatIcon(item.format) : 'Clock'} size={18} />
+          <Icon name={formatIcon(item.format)} size={18} />
         </span>
         <div className="min-w-0">
-          {item.url ? (
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-heading text-[0.98em] leading-snug text-primary hover:underline"
-            >
-              {item.title}
-            </a>
-          ) : (
-            <span className="font-heading text-[0.98em] leading-snug text-muted-foreground">
-              {item.title}
-            </span>
-          )}
-          {meta && <p className="mt-1 text-[0.82em] text-muted-foreground">{meta}</p>}
-          {!item.url && (
-            <p className="mt-1 text-[0.82em] text-teal">Файл готовится к публикации</p>
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-heading text-[0.98em] leading-snug text-primary hover:underline"
+          >
+            {item.title}
+          </a>
+          {meta && (
+            <p className="mt-1 text-[0.82em] text-muted-foreground">{meta}</p>
           )}
         </div>
       </div>
@@ -56,7 +54,7 @@ const Item = ({ item }: { item: LibraryItem }) => {
 };
 
 const LibraryCatalog = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [openTopic, setOpenTopic] = useState<string | null>(null);
 
   const found = useMemo(() => {
@@ -80,7 +78,11 @@ const LibraryCatalog = () => {
         </p>
 
         <div className="mt-7 flex h-[52px] max-w-[520px] items-center gap-3 rounded-lg border border-border bg-background px-4">
-          <Icon name="Search" size={20} className="flex-none text-muted-foreground" />
+          <Icon
+            name="Search"
+            size={20}
+            className="flex-none text-muted-foreground"
+          />
           <input
             type="text"
             value={query}
@@ -93,7 +95,7 @@ const LibraryCatalog = () => {
             <button
               type="button"
               aria-label="Очистить поиск"
-              onClick={() => setQuery('')}
+              onClick={() => setQuery("")}
               className="flex-none text-muted-foreground hover:text-foreground"
             >
               <Icon name="X" size={18} />
@@ -105,7 +107,8 @@ const LibraryCatalog = () => {
           <div className="mt-8">
             {found.length === 0 ? (
               <p className="text-muted-foreground">
-                Ничего не&nbsp;найдено. Попробуйте другое слово или очистите поиск.
+                Ничего не&nbsp;найдено. Попробуйте другое слово или очистите
+                поиск.
               </p>
             ) : (
               <>
@@ -117,7 +120,10 @@ const LibraryCatalog = () => {
                     const list = found.filter((d) => d.block === block.title);
                     if (!list.length) return null;
                     return (
-                      <div key={block.title} className="border-t border-border pt-5 first:border-t-0">
+                      <div
+                        key={block.title}
+                        className="border-t border-border pt-5 first:border-t-0"
+                      >
                         <p className="eyebrow">{block.title}</p>
                         <ul className="mt-2">
                           {list.map((d) => (
@@ -134,11 +140,19 @@ const LibraryCatalog = () => {
         ) : (
           <div className="mt-10 space-y-12">
             {LIBRARY_BLOCKS.map((block) => {
-              const inBlock = LIBRARY_ITEMS.filter((d) => d.block === block.title);
+              const inBlock = LIBRARY_ITEMS.filter(
+                (d) => d.block === block.title,
+              );
               return (
-                <section key={block.title} id={BLOCK_IDS[block.title]} className="scroll-mt-24">
+                <section
+                  key={block.title}
+                  id={BLOCK_IDS[block.title]}
+                  className="scroll-mt-24"
+                >
                   <div className="border-l-[3px] border-teal pl-4">
-                    <h2 className="font-heading text-[1.35em] leading-tight">{block.title}</h2>
+                    <h2 className="font-heading text-[1.35em] leading-tight">
+                      {block.title}
+                    </h2>
                     <p className="mt-1.5 max-w-[68ch] text-[0.9em] leading-[1.5] text-muted-foreground">
                       {block.text}
                     </p>
@@ -164,13 +178,15 @@ const LibraryCatalog = () => {
                             onClick={() => setOpenTopic(isOpen ? null : key)}
                             className="flex min-h-[56px] w-full items-center justify-between gap-3 px-5 text-left transition-colors hover:text-primary"
                           >
-                            <span className="font-heading text-[1em] leading-snug">{topic}</span>
+                            <span className="font-heading text-[1em] leading-snug">
+                              {topic}
+                            </span>
                             <span className="flex flex-none items-center gap-2.5 text-[0.85em] text-muted-foreground">
                               {list.length}
                               <Icon
                                 name="ChevronDown"
                                 size={18}
-                                className={`transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                                className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
                               />
                             </span>
                           </button>
