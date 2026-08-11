@@ -4,6 +4,7 @@ import Recommendations from '@/components/site/Recommendations';
 import VolunteerDocs from '@/components/site/VolunteerDocs';
 import Volunteers from '@/components/site/Volunteers';
 import { VOLUNTEER_GROUPS } from '@/data/recommendations';
+import { scrollToSection } from '@/lib/scroll';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 const TRAINING = [
@@ -53,6 +54,18 @@ const VolunteeringPage = () => {
             Куда обратиться за&nbsp;волонтёрской помощью, как оформить отношения
             с&nbsp;добровольцем, где обучить волонтёров и&nbsp;какие законы это регулируют.
             Всё собрано в&nbsp;одном разделе.
+          </p>
+
+          <button
+            type="button"
+            onClick={() => scrollToSection('volunteer-training')}
+            className="mt-7 inline-flex min-h-[48px] items-center gap-2 rounded-lg bg-primary px-6 font-heading text-[0.95em] text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            <Icon name="GraduationCap" size={18} />
+            Бесплатное обучение волонтёров
+          </button>
+          <p className="mt-3 text-[0.85em] text-muted-foreground">
+            Два онлайн-курса с&nbsp;открытой записью
           </p>
         </div>
       </section>
