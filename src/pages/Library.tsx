@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import Icon from "@/components/ui/icon";
 import Documents from "@/components/site/Documents";
 import Recommendations from "@/components/site/Recommendations";
 import { METHODICAL_GROUPS } from "@/data/recommendations";
@@ -38,6 +39,31 @@ const LibraryPage = () => {
         groups={METHODICAL_GROUPS}
         buttonLabel="материалов"
       />
+
+      <section
+        id="library-table"
+        className="scroll-mt-24 border-t border-border py-14 sm:py-16"
+      >
+        <div className="section-shell">
+          <div className="rounded-lg border border-border bg-surface p-6 sm:p-8">
+            <h2 className="font-heading text-[1.2em] leading-tight">
+              Сводная таблица всех материалов
+            </h2>
+            <p className="mt-3 max-w-[68ch] text-[0.92em] leading-[1.55] text-muted-foreground">
+              Все 97&nbsp;материалов библиотеки одним файлом: раздел, тип, название,
+              организация, регион и&nbsp;прямая ссылка на&nbsp;документ. С&nbsp;фильтрами —
+              удобно искать и&nbsp;отбирать нужное.
+            </p>
+            <a
+              href="/docs/Biblioteka-NKO-svodnaya-tablitsa.xlsx"
+              className="mt-5 inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-primary px-5 text-[0.9em] text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              <Icon name="Table2" size={16} />
+              Скачать таблицу, XLSX
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

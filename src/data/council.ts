@@ -56,6 +56,7 @@ export const NAV_LINKS: NavLinkItem[] = [
       { hash: 'documents', label: 'Материалы регионов', hint: 'Практики и пособия НКО из регионов' },
       { hash: 'recommendations', label: 'Образцы и инструкции', hint: 'Памятки, уставы, протоколы' },
       { hash: 'methodical', label: 'Методические сборники', hint: 'Регистрация, отчётность, финансы, управление' },
+      { hash: 'library-table', label: 'Сводная таблица', hint: 'Все 97 материалов одним файлом, XLSX' },
     ],
   },
   { path: '/authorities', label: 'Органы власти' },
