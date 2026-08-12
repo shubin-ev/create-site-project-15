@@ -717,6 +717,7 @@ export const MEMBERS: Member[] = [
     region: 'Москва',
     kind: 'org',
     roleNote: 'Оргкомитет · рук. РГ по клиническим рекомендациям',
+    photo: '/people/tre.jpg',
     groups: ['clinical'],
   },
   {
@@ -725,6 +726,7 @@ export const MEMBERS: Member[] = [
     region: 'Иркутская область',
     kind: 'org',
     roleNote: 'Оргкомитет · рук. стоматологическая помощь',
+    photo: '/people/fed.jpg',
     groups: ['dental', 'access'],
   },
   {
@@ -733,6 +735,7 @@ export const MEMBERS: Member[] = [
     region: 'Москва',
     kind: 'org',
     roleNote: 'Оргкомитет · рук. доступность среды',
+    photo: '/people/shp.jpg',
     groups: ['clinical', 'access'],
   },
   {
