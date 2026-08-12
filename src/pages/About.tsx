@@ -1,4 +1,5 @@
 import About from '@/components/site/About';
+import Leadership from '@/components/site/Leadership';
 import Members from '@/components/site/Members';
 import WorkGroups from '@/components/site/WorkGroups';
 import Meetings from '@/components/site/Meetings';
@@ -13,6 +14,7 @@ const AboutPage = () => {
   return (
     <>
       <About />
+      <Leadership />
       <Members />
       <WorkGroups />
       <Meetings />

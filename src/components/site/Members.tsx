@@ -10,10 +10,11 @@ const initials = (name: string) =>
     .join('');
 
 const KIND_FILTERS = [
-  { id: 'all', label: 'Весь состав' },
-  { id: 'lead', label: 'Председатель и оргкомитет' },
+  { id: 'all', label: 'Все члены Совета' },
   { id: 'group', label: 'Участники рабочих групп' },
 ] as const;
+
+const ORDINARY = MEMBERS.filter((m) => m.kind === 'member');
 
 type KindFilter = (typeof KIND_FILTERS)[number]['id'];
 
@@ -29,13 +30,10 @@ const Members = () => {
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return MEMBERS.filter((m) => {
+    return ORDINARY.filter((m) => {
       const byQuery = !q || `${m.name} ${m.position} ${m.region}`.toLowerCase().includes(q);
       const byRegion = region === 'all' || m.region === region;
-      const byKind =
-        kind === 'all' ||
-        (kind === 'lead' && m.kind !== 'member') ||
-        (kind === 'group' && m.groups.length > 0);
+      const byKind = kind === 'all' || (kind === 'group' && m.groups.length > 0);
       const byGroup = group === 'all' || m.groups.includes(group);
       return byQuery && byRegion && byKind && byGroup;
     });
@@ -63,7 +61,11 @@ const Members = () => {
   return (
     <section id="members" className="scroll-mt-24 border-t border-border py-16 sm:py-20">
       <div className="section-shell">
-        <p className="eyebrow mb-6">Состав Совета</p>
+        <p className="eyebrow mb-3">Члены Совета</p>
+        <p className="mb-6 max-w-2xl text-[0.9em] leading-[1.6] text-muted-foreground">
+          Руководители и представители НКО из регионов России. Председатель и организационный
+          комитет — в разделе выше.
+        </p>
 
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_280px]">
           <label className="relative block">
@@ -177,9 +179,18 @@ const Members = () => {
                 }`}
               >
                 <div className="flex items-start gap-4">
-                  <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-secondary font-heading text-[0.95em] font-medium text-primary">
-                    {initials(m.name)}
-                  </span>
+                  {m.photo ? (
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      loading="lazy"
+                      className="h-12 w-12 flex-none rounded-full object-cover"
+                    />
+                  ) : (
+                    <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-secondary font-heading text-[0.95em] font-medium text-primary">
+                      {initials(m.name)}
+                    </span>
+                  )}
                   <div className="min-w-0">
                     <h3 className="font-heading text-[1em] leading-snug">{m.name}</h3>
                     <p className="mt-1 text-[0.85em] text-muted-foreground">

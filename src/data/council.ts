@@ -45,6 +45,7 @@ export const NAV_LINKS: NavLinkItem[] = [
     label: 'О Совете',
     items: [
       { hash: 'about', label: 'О Совете и документы', hint: 'Цель, устройство работы, положение и отчёты' },
+      { hash: 'leadership', label: 'Председатель и оргкомитет', hint: 'Руководство Совета и координация работы' },
       { hash: 'members', label: 'Состав Совета', hint: '114 представителей НКО из 84 регионов' },
       { hash: 'groups', label: 'Рабочие группы', hint: 'Три профильные группы и их составы' },
       { hash: 'meetings', label: 'Заседания', hint: 'График встреч, повестки и протоколы' },
@@ -576,6 +577,7 @@ export type Member = {
   region: string;
   kind: 'chair' | 'org' | 'member';
   roleNote?: string;
+  photo?: string;
   groups: WorkGroupId[];
 };
 
@@ -679,6 +681,7 @@ export const MEMBERS: Member[] = [
     region: 'Санкт-Петербург',
     kind: 'chair',
     roleNote: 'Председатель Совета',
+    photo: '/people/lim.jpg',
     groups: [],
   },
   {
@@ -687,6 +690,7 @@ export const MEMBERS: Member[] = [
     region: 'Санкт-Петербург',
     kind: 'org',
     roleNote: 'Оргкомитет',
+    photo: '/people/geb.jpg',
     groups: ['clinical', 'access'],
   },
   {
@@ -695,6 +699,7 @@ export const MEMBERS: Member[] = [
     region: 'Владимирская область',
     kind: 'org',
     roleNote: 'Оргкомитет',
+    photo: '/people/kac.jpg',
     groups: [],
   },
   {
@@ -703,6 +708,7 @@ export const MEMBERS: Member[] = [
     region: 'Самарская область',
     kind: 'org',
     roleNote: 'Оргкомитет',
+    photo: '/people/tit.jpg',
     groups: [],
   },
   {
@@ -1357,6 +1363,7 @@ export const MEMBERS: Member[] = [
     position: 'Председатель Нижегородского регионального отделения Общероссийской общественной организации инвалидов «Новые возможности»',
     region: 'Нижегородская область',
     kind: 'member',
+    photo: '/people/tol.jpg',
     groups: ['clinical'],
   },
   {
