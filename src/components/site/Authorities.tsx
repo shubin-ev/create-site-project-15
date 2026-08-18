@@ -1,7 +1,12 @@
 import { useMemo, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
-import { AUTHORITIES, AUTHORITY_CATEGORIES, AUTHORITY_REGIONS } from '@/data/authorities';
+import {
+  AUTHORITIES,
+  AUTHORITY_CATEGORIES,
+  AUTHORITY_DISTRICTS,
+  AUTHORITY_REGIONS,
+} from '@/data/authorities';
 
 const PAGE = 12;
 
@@ -97,11 +102,20 @@ const Authorities = () => {
               className="h-[52px] w-full rounded-lg border border-border bg-background px-4 transition-colors hover:border-primary focus:border-primary"
             >
               <option value="all">Все регионы</option>
-              {AUTHORITY_REGIONS.map((r) => (
-                <option key={r} value={r}>
-                  {r}
-                </option>
-              ))}
+              <optgroup label="Федеральные округа">
+                {AUTHORITY_DISTRICTS.map((d) => (
+                  <option key={d} value={d}>
+                    {d}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="Субъекты РФ">
+                {AUTHORITY_REGIONS.map((r) => (
+                  <option key={r} value={r}>
+                    {r}
+                  </option>
+                ))}
+              </optgroup>
             </select>
           </label>
         </div>
