@@ -28,7 +28,7 @@ export const PARTNER_LINKS: PartnerLink[] = [
     url: 'https://psychiatr.ru/',
     logo: '/partners/rop-white.png',
     logoColor: '/partners/rop-hover.png',
-    ratio: 'h-10 w-auto',
+    ratio: 'h-14 w-auto',
     headerRatio: 'h-7 w-auto',
   },
 ];
